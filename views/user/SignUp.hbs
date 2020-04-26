@@ -1,0 +1,17 @@
+<h1>Sign Up</h1>
+<form action="/store/authorization/signup" method="post">
+    <label for="firstName">Email</label>
+    <input type="text" id="firstName" name="firstName">
+    <hr>
+    <label for="lastName">Email</label>
+    <input type="text" id="lastName" name="lastName">
+    <hr>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email">
+    <hr>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+    <hr>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <button type="submit">Sign Up</button>
+</form>

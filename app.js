@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const expressHandlebars = require('express-handlebars');
 const HomeRouter = require('./routes/home.routes');
 const ProductsRouter = require('./routes/products.routes');
@@ -16,6 +19,15 @@ const handlebars = expressHandlebars.create({
 app.engine('hbs', handlebars.engine);
 app.set('view engine', 'hbs');
 app.set('views', 'views');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({
+    secret: 'storeappsecret',
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.use(express.json({ extended: true }));
 app.use('/store', HomeRouter);
