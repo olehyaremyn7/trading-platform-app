@@ -1,0 +1,27 @@
+{
+  "name": "online_shore_app",
+  "version": "1.0.7",
+  "description": "Graduate  work. Online store app project. /NodeJS/ExpressJS/MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "expressjs",
+    "app",
+    "store"
+  ],
+  "author": "Oleh Yaremyn <oleh_yaremyn@ukr.net>",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
