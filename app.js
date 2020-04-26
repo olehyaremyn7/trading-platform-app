@@ -1,9 +1,26 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
+const expressHandlebars = require('express-handlebars');
+const HomeRouter = require('./routes/home.routes');
+const ProductsRouter = require('./routes/products.routes');
+const AuthorizationRouter = require('./routes/authorization.routes');
 
 const app = express();
 const PORT = config.get('port') || 5000;
+const handlebars = expressHandlebars.create({
+    defaultLayout: 'layout',
+    extname: 'hbs'
+});
+
+app.engine('hbs', handlebars.engine);
+app.set('view engine', 'hbs');
+app.set('views', 'views');
+
+app.use(express.json({ extended: true }));
+app.use('/store', HomeRouter);
+app.use('/store', ProductsRouter);
+app.use('/store/authorization', AuthorizationRouter);
 
 const start = async () => {
     try {
