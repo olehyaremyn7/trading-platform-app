@@ -1,13 +1,12 @@
 <h1>Sign Up</h1>
-<form action="/store/authorization/signup" method="post">
-    <label for="firstName">Email</label>
-    <input type="text" id="firstName" name="firstName">
-    <hr>
-    <label for="lastName">Email</label>
-    <input type="text" id="lastName" name="lastName">
-    <hr>
+{{#if hasErrors }}
+    {{# each messages }}
+        <p>{{ this }}</p>
+    {{/each}}
+{{/if}}
+<form action="/user/signup" method="post">
     <label for="email">Email</label>
-    <input type="text" id="email" name="email">
+    <input type="text" id="username" name="username">
     <hr>
     <label for="password">Password</label>
     <input type="password" id="password" name="password">

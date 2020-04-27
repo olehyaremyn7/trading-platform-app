@@ -1,26 +1,23 @@
 const { Schema, model, Types } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-    firstName: {
+    username: {
         type: String,
         required: true
-    },
-    lastName: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
     },
     password: {
         type: String,
         required: true
-    },
-    products: [{
-        type: Types.ObjectId, ref: 'UserProduct'
-    }]
+    }
 });
+
+userSchema.methods.encryptPassword = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
+};
+
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
 
 module.exports = model('User', userSchema);

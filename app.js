@@ -4,10 +4,11 @@ const config = require('config');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
 const expressHandlebars = require('express-handlebars');
-const HomeRouter = require('./routes/home.routes');
-const ProductsRouter = require('./routes/products.routes');
-const AuthorizationRouter = require('./routes/authorization.routes');
+const ShopRouter = require('./routes/shop');
+require('./config/passport');
 
 const app = express();
 const PORT = config.get('port') || 5000;
@@ -28,11 +29,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.json({ extended: true }));
-app.use('/store', HomeRouter);
-app.use('/store', ProductsRouter);
-app.use('/store/authorization', AuthorizationRouter);
+app.use('/', ShopRouter);
 
 const start = async () => {
     try {
