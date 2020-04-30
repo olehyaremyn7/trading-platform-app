@@ -13,7 +13,7 @@ passport.deserializeUser((id, done) => {
     });
 });
 
-// Passport registration
+// Passport registration strategy
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
@@ -48,5 +48,38 @@ passport.use('local.signup', new LocalStrategy({
             }
             return done(null, newUser);
         });
+    });
+}));
+
+// Passport login strategy
+passport.use('local.signin', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+}, (req, username, password, done) => {
+
+    // express validation
+    req.checkBody('username', 'Invalid email').notEmpty().isEmail();
+    req.checkBody('password', 'Invalid password').notEmpty();
+
+    // error handler
+    const errors = req.validationErrors();
+    if (errors) {
+        const messages = [];
+        errors.forEach((error) => { messages.push(error.msg); });
+        return done(null, false, req.flash('error', messages));
+    }
+
+    User.findOne({'username': username}, (err, user) => {
+        if (err) {
+            return done(err);
+        }
+        if (!user) {
+            return done(null, false, {message: 'Користувач відсутній'});
+        }
+        if (!user.validPassword(password)) {
+            return done(null, false, {message: 'Невірний пароль'});
+        }
+        return done(null, user);
     });
 }));

@@ -1,0 +1,16 @@
+<h1>Sign In</h1>
+{{#if hasErrors }}
+    {{# each messages }}
+        <p>{{ this }}</p>
+    {{/each}}
+{{/if}}
+<form action="/user/signin" method="post">
+    <label for="email">Email</label>
+    <input type="text" id="username" name="username">
+    <hr>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+    <hr>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <button type="submit">Sign In</button>
+</form>
