@@ -12,11 +12,12 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.methods.encryptPassword = function(password) {
+// bcrypt hash password
+userSchema.methods.encryptPassword = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
 };
 
-userSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = (password) => {
     return bcrypt.compareSync(password, this.password);
 };
 

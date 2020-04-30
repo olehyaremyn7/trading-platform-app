@@ -2,33 +2,47 @@ const passport = require('passport');
 const User = require('../models/User');
 const LocalStrategy = require('passport-local').Strategy;
 
-passport.serializeUser(function(user, done) {
+// Passport methods to set the compliance of user authentication req
+passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
         done(err, user);
     });
 });
 
+// Passport registration
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true
-}, function(req, username, password, done) {
+}, (req, username, password, done) => {
 
-    User.findOne({'username': username}, function(err, user) {
+    // express validation
+    req.checkBody('username', 'Некоректна електронна пошта').notEmpty().isEmail();
+    req.checkBody('password', 'Некоректний пароль').notEmpty().isLength({min:6});
+
+    // error handler
+    const errors = req.validationErrors();
+    if (errors) {
+        const messages = [];
+        errors.forEach((error) => { messages.push(error.msg) });
+        return done(null, false, req.flash('error', messages));
+    }
+
+    User.findOne({'username': username}, (err, user) => {
         if (err) {
             return done(err);
         }
         if (user) {
-            return done(null, false, {message: 'Email is already in use.'});
+            return done(null, false, {message: 'Користувач з такою електронною поштою уже існує'});
         }
         const newUser = new User();
         newUser.username = username;
         newUser.password = newUser.encryptPassword(password);
-        newUser.save(function(err, result) {
+        newUser.save((err, result) => {
             if (err) {
                 return done(err);
             }

@@ -8,12 +8,12 @@ const Product = require('../models/Product');
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
-// get home page // /shop/home
+// get home page // /store/home
 router.get('/home', async (req, res) => {
     res.render('shop/HomePage', { title: 'Shop home page' })
 });
 
-// get products from db // /shop/products
+// get products from db and products page // /store/products
 router.get('/products', async (req, res, next) => {
     try {
         const products = await Product.find({})
@@ -23,17 +23,20 @@ router.get('/products', async (req, res, next) => {
     }
 });
 
+// get csrfToken route when we render SignUp page /store/authorization/signup
 router.get('/user/signup', (req, res) => {
     const messages = req.flash('error');
     res.render('user/SignUp', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 })
 });
 
+// signup post method and passport middleware for registration
 router.post('/user/signup', passport.authenticate('local.signup', {
    successRedirect: '/user/profile',
     failureRedirect: '/user/signup',
     failureFlash: true
 }));
 
+// get profile page // /store/user/profile
 router.get('/user/profile', (req, res) => {
     res.render('user/Profile');
 });
