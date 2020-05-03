@@ -8,7 +8,10 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
 const expressHandlebars = require('express-handlebars');
-const ShopRouter = require('./routes/shop');
+// Routes initialization
+const StoreRouter = require('./routes/store.routes');
+const AuthorizationRouter = require('./routes/authorization.routes');
+const UserRouter = require('./routes/user.routes');
 require('./config/passport'); // passport config
 
 const app = express();
@@ -37,9 +40,17 @@ app.use(flash()); // flash messages
 app.use(passport.initialize());
 app.use(passport.session());
 
+// global property which available in views
+app.use((req, res, next) => {
+   res.locals.login = req.isAuthenticated();
+   next();
+});
+
 // Routes
 app.use(express.json({ extended: true }));
-app.use('/', ShopRouter);
+app.use('/store/authorization', AuthorizationRouter);
+app.use('/store/user', UserRouter);
+app.use('/store', StoreRouter);
 
 // Connection to MongoDB
 const start = async () => {
