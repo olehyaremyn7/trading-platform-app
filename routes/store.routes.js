@@ -42,4 +42,19 @@ router.get('/add-to-cart/:id', async (req, res) => {
      }
 });
 
+// get shopping-cart page // /store/shopping-cart
+router.get('/shopping-cart', async (req, res) => {
+    try {
+        if (!req.session.cart) {
+            return res.render('shop/ShoppingCart', { products: null });
+        }
+
+        const cart = await new Cart(req.session.cart);
+        res.render('shop/ShoppingCart', { products: cart.generateArray(), totalPrice: cart.totalPrice });
+    } catch (e) {
+        console.log({ message: e });
+    }
+
+});
+
 module.exports = router;

@@ -1,0 +1,12 @@
+<h1>Shopping Cart</h1>
+{{# if products }}
+    {{# each products }}
+        {{ this.quantity }}
+        {{ this.item.title }}
+        {{ this.price }}
+    {{/each}}
+    <p><strong>Total: {{ totalPrice }} </strong></p>
+    <button>Checkout</button>
+    {{ else }}
+    <p>NO ITEMS IN SHOPPING CART</p>
+{{/if}}
