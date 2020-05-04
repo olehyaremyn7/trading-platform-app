@@ -8,6 +8,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
 const expressHandlebars = require('express-handlebars');
+const MongoStore = require('connect-mongo')(session); // for session
 // Routes initialization
 const StoreRouter = require('./routes/store.routes');
 const AuthorizationRouter = require('./routes/authorization.routes');
@@ -34,7 +35,9 @@ app.use(cookieParser());
 app.use(session({
     secret: 'storeappsecret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 180 * 60 * 1000 }
 }));
 app.use(flash()); // flash messages
 app.use(passport.initialize());
@@ -43,6 +46,7 @@ app.use(passport.session());
 // global property which available in views
 app.use((req, res, next) => {
    res.locals.login = req.isAuthenticated();
+   res.locals.session = req.session;
    next();
 });
 
