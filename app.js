@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo')(session); // for session
 const StoreRouter = require('./routes/store.routes');
 const AuthorizationRouter = require('./routes/authorization.routes');
 const UserRouter = require('./routes/user.routes');
+const CheckoutRouter = require('./routes/checkout.routes');
 require('./config/passport'); // passport config
 
 const app = express();
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
 app.use(express.json({ extended: true }));
 app.use('/store/authorization', AuthorizationRouter);
 app.use('/store/user', UserRouter);
+app.use('/store/checkout', CheckoutRouter);
 app.use('/store', StoreRouter);
 
 // Connection to MongoDB
