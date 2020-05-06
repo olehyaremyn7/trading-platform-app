@@ -19,10 +19,17 @@ router.get('/signup', (req, res) => {
 
 // signup post method and passport middleware for registration
 router.post('/signup', passport.authenticate('local.signup', {
-    successRedirect: '/store/user/profile',
     failureRedirect: '/store/authorization/signup',
     failureFlash: true
-}));
+}), (req, res) => {
+    if (req.session.oldURL) {
+        const oldURL = req.session.oldURL;
+        req.session.oldURL = null;
+        res.redirect(oldURL);
+    } else {
+        res.redirect('/store/user/profile');
+    }
+});
 
 // get csrfToken route when we render SignIn page /store/authorization/signin
 router.get('/signin', (req, res) => {
@@ -32,10 +39,17 @@ router.get('/signin', (req, res) => {
 
 // signup post method and passport middleware for login
 router.post('/signin', passport.authenticate('local.signin', {
-    successRedirect: '/store/user/profile',
     failureRedirect: '/store/authorization/signin',
     failureFlash: true
-}));
+}), (req, res) => {
+    if (req.session.oldURL) {
+        const oldURL = req.session.oldURL;
+        req.session.oldURL = null;
+        res.redirect(oldURL);
+    } else {
+        res.redirect('/store/user/profile');
+    }
+});
 
 router.get('/logout', (req, res) => {
     req.logout();

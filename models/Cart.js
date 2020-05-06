@@ -21,6 +21,25 @@ module.exports = function Cart (oldCart) {
         }
     };
 
+    // reduce one item from cart
+    this.reduceByOne = (id) => {
+        this.items[id].quantity--;
+        this.items[id].price -= this.items[id].item.price;
+        this.totalQuantity--;
+        this.totalPrice -= this.items[id].item.price;
+
+        if (this.items[id].quantity <= 0) {
+            delete this.items[id];
+        }
+    };
+
+    // remove all items from cart
+    this.removeItem = (id) => {
+        this.totalQuantity -= this.items[id].quantity;
+        this.totalPrice -= this.items[id].price;
+        delete this.items[id];
+    };
+
     this.generateArray = function () {
         let arr = [];
         for (let id in this.items) {

@@ -33,13 +33,13 @@
                                         </button>
 
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/reduce/{{ this.item._id }}">Reduce by 1</a>
-                                            <a class="dropdown-item" href="/remove/{{ this.item._id }}">Remove All</a>
+                                            <a class="dropdown-item" href="/store/reduce/{{ this.item._id }}">Reduce by 1</a>
+                                            <a class="dropdown-item" href="/store/remove/{{ this.item._id }}">Remove All</a>
                                         </div>
                                     </div>
 
                                     <span style="font-size: 15px;" class="badge badge-success badge-pill success z-depth-1 ml-1 mr-1"><strong>${{ this.price }}</strong></span>
-                                    <span style="font-size: 15px;" class="badge badge-indigo badge-pill indigo z-depth-1 ml-1 mr-1">{{ this.qty }}</span>
+                                    <span style="font-size: 15px;" class="badge badge-indigo badge-pill indigo z-depth-1 ml-1 mr-1">{{ this.quantity }}</span>
                                 </li>
                             {{/each}}
                         </div>

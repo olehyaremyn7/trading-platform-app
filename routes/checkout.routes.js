@@ -13,23 +13,23 @@ router.get('/', async (req, res) => {
         const cart = await new Cart(req.session.cart);
         res.render('checkout/CheckoutPage', { total: cart.totalPrice });
     } catch (e) {
-
+        console.log({ message: e });
     }
 });
 
 // get payment page // /store/checkout/payment
-router.get('/payment', async (req, res) => {
+router.get('/payment', isLoggedIn, async (req, res) => {
      try {
          const cart = await new Cart(req.session.cart);
          const errMsg = req.flash('error')[0];
          res.render('checkout/PaymentPage', { total: cart.totalPrice, errMsg: errMsg, noError: !errMsg });
      } catch (e) {
-
+         console.log({ message: e });
      }
 });
 
 // payment post method for order // /store/checkout/payment
-router.post('/payment', async (req, res) => {
+router.post('/payment', isLoggedIn, async (req, res) => {
     try {
         if (!req.session.cart) {
             return res.redirect('/store/shopping-cart')
@@ -74,3 +74,12 @@ router.post('/payment', async (req, res) => {
 });
 
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    const url = '/store/checkout/payment';
+    req.session.oldURL = url;
+    res.redirect('/store/authorization/signin');
+}

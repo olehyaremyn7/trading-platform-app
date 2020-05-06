@@ -43,6 +43,34 @@ router.get('/add-to-cart/:id', async (req, res) => {
      }
 });
 
+// get reduce method which reduce one item from cart
+router.get('/reduce/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const cart = new Cart(req.session.cart ? req.session.cart : {});
+
+        await cart.reduceByOne(productId);
+        req.session.cart = cart;
+        res.redirect('/store/shopping-cart');
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+// get remove method which remove all items from cart
+router.get('/remove/:id', async (req, res, next) => {
+    try {
+        const productId = req.params.id;
+        const cart = new Cart(req.session.cart ? req.session.cart : {});
+
+        await cart.removeItem(productId);
+        req.session.cart = cart;
+        res.redirect('/store/shopping-cart');
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
 // get shopping-cart page // /store/shopping-cart
 router.get('/shopping-cart', async (req, res) => {
     try {
