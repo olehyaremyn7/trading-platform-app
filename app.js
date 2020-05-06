@@ -43,6 +43,8 @@ app.use(session({
 app.use(flash()); // flash messages
 app.use(passport.initialize());
 app.use(passport.session());
+// public folder
+app.use(express.static(__dirname + '/public'));
 
 // global property which available in views
 app.use((req, res, next) => {

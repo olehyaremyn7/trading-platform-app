@@ -1,14 +1,36 @@
-<h1>{{ title }}</h1>
-<p>Welcome to {{ title }}</p>
-<a href="/store/products">Products</a>
-<br>
-<a href="/store/shopping-cart">Shopping Cart
-{{ session.cart.totalQuantity }}</a>
+{{> header}}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-{{# if login }}
-    <a href="/store/user/profile">User Account</a>
-    <a href="/store/user/logout">Logout</a>
-    {{ else }}
-    <a href="/store/authorization/signup">Sign up</a>
-    <a href="/store/authorization/signin">Sign in</a>
-    {{/if}}
+<main>
+    <section>
+        <div class="container">
+            <h1>Home page</h1>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 mb-3">
+                    <div id="success" role="alert" class="alert alert-success {{#if noMessages}}d-none{{/if}}">
+                        {{ successMsg }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var $btnTop = $(".btn-top")
+    $(window).on("scroll", function(){
+        if($(window).scrollTop() >= 10) {
+            $btnTop.fadeIn();
+        }
+        else {
+            $btnTop.fadeOut();
+        }
+    });
+
+    $btnTop.on("click", function(){
+        $("html,body").animate({scrollTop:0}, 900)
+    });
+</script>

@@ -1,1 +1,128 @@
-<h1>User Profile</h1>
+{{> header }}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<div class="container">
+    <div class="row mt-4 justify-content-center">
+
+        <div class="col-md-6 mb-4 text-center text-md-left">
+            <h1 class="display-4 font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">User Profile </h1>
+            <hr style="border-top: 2px solid;" class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
+
+            <div class="card">
+                <div class="card-body">
+                    <h1 style="font-size: 100px;" class="dark-grey-text text-center"><strong>
+                        <i class="fas fa-user-circle prefix grey-text"></i>
+                    </strong></h1>
+                    <h3 class="dark-grey-text text-center"><strong>Oleh Yaremyn</strong></h3>
+                    <hr class="hr-dark">
+
+                    <div class="modal fade" id="modalCreateNewProductForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">New User Product</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body mx-3">
+                                    <div class="md-form mb-5">
+                                        <i class="fas fa-file-signature prefix grey-text"></i>
+                                        <input type="text" id="" class="form-control validate">
+                                        <label data-error="wrong" data-success="right" for="form34">Title</label>
+                                    </div>
+
+                                    <div class="md-form mb-5">
+                                        <i class="fas fa-list-alt prefix grey-text"></i>
+                                        <input type="text" id="" class="form-control validate">
+                                        <label data-error="wrong" data-success="right" for="form34">Categories</label>
+                                    </div>
+
+                                    <div class="md-form mb-5">
+                                        <i class="fas fa-dollar-sign prefix grey-text"></i>
+                                        <input type="text" id="" class="form-control validate">
+                                        <label data-error="wrong" data-success="right" for="form32">Price</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <i class="fas fa-pencil prefix grey-text"></i>
+                                        <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+                                        <label data-error="wrong" data-success="right" for="form8">Your description</label>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                   aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose photo</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button class="btn btn-unique">Post your product <i class="fas fa-paper-plane-o ml-1"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#modalCreateNewProductForm">Add your product
+                            <a href="#"></a>
+                        </button>
+                        <button type="button" class="btn btn-indigo btn-rounded">Edit profile
+                            <a href="#"></a>
+                        </button>
+                    </div>
+
+                    <ul class="list-group list-group-flush mt-2">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Active goods: <span class="badge badge-primary badge-pill">2</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Added goods: <span class="badge badge-primary badge-pill">12</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Sold goods: <span class="badge badge-primary badge-pill">10</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Purchased goods: <span class="badge badge-primary badge-pill">5</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xl-5 mb-4">
+            <h1 class="display-4 font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">My Orders </h1>
+            <hr style="border-top: 2px solid;" class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
+            {{# each orders }}
+                <div class="mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><a class="md-left"><strong>You ordered:</strong></a></h4>
+                            <hr>
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <ul class="list-group">
+                                        {{# each this.items }}
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                {{ this.item.title }} | {{ this.qty }} Units
+                                                <span class="badge badge-primary badge-pill">{{ this.price }}</span>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="panel-footer">
+                                    <strong>Total Price: ${{ this.cart.totalPrice }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {{/each}}
+        </div>
+
+    </div>
+</div>

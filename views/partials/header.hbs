@@ -1,0 +1,75 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+            <a href="/store/home" class="navbar-brand waves-effect"><strong class="unique-color-dark-text">
+                <i class="fas fa-shopping-bag"></i> ᴇᴀꜱʏꜱʜᴏᴘ</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collaps navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link active waves-effect" href="/store/home"><strong><i class="fas fa-home"></i> Home</strong></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active waves-effect" href="/store/products">Products</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link waves-effect" data-toggle="modal" data-target="#exampleModal">About us<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active waves-effect" href="#">Blog</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect" href="/store/shopping-cart/"><strong>
+                            <i class="fas fa-shopping-cart"></i> <span class="clearfix d-none d-sm-inline-block">Shopping Cart</span></strong>
+                            <span class="badge red z-depth-1 ml-1 mr-1">{{session.cart.totalQty}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-extended="false"><strong><i class="fas fa-user"></i><span class="clearfix d-none d-sm-inline-block">User Management</span></strong></a>
+
+                        <div class="dropdown-menu" aria-labelleby="navbarDropdownMenuLink">
+                            {{# if login }}
+                                <a class="dropdown-item v" href="/store/user/profile"><i class="fas fa-user-circle"></i> User Account</a>
+                                <a class="dropdown-item waves-effect" href="/store/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            {{ else }}
+                                <a class="dropdown-item waves-effect" href="/store/authorization/signup"><i class="fas fa-user-plus"></i> Sign up</a>
+                                <a class="dropdown-item waves-effect" href="/store/authorization/signin"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+                            {{/if}}
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="https://uk-ua.facebook.com/" class="nav-link waves-effect">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="https://twitter.com/" class="nav-link waves-effect">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="https://www.instagram.com/" class="nav-link border border-light rounded waves-effect">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

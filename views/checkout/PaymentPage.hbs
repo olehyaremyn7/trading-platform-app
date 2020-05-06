@@ -1,26 +1,72 @@
-<h1>Payment</h1>
-<h3>Your Total: {{ total }} $</h3>
-<form action="/store/checkout/payment" method="post" id="checkout-form">
-    <input type="text" id="name" required name="name">
-    <label for="name">Name</label>
+{{> header }}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <input type="text" id="address" required name="address">
-    <label for="address">Address</label>
+<div class="container">
+        <form action="/store/checkout/payment" method="post" id="checkout-form">
+            <h3 class="dark-grey-text text-center mt-2 mb-2"><strong>
+                <i class="fab fa-cc-visa prefix grey-text"></i>
+                Payment Details</strong></h3>
 
-    <input type="text" id="card-name" required>
-    <label for="card-name">Card Holder Name</label>
+            <div id="charge-error" class="alert alert-danger {{#if noError}}d-none{{/if}}">
+                {{errMsg}}
+            </div>
 
-    <input type="text" id="card-number" required>
-    <label for="card-number">Credit Card Number</label>
+            <hr>
 
-    <input type="text" id="card-expiry-month" required>
-    <label for="card-expiry-month">Expiration Month</label>
+            <div class="md-form">
+                <i class="fas fa-envelope prefix grey-text active"></i>
+                <input type="text" id="name" class="form-control" required name="name">
+                <label data-error="wrong" data-success="right" for="form34">Name</label>
+            </div>
 
-    <input type="text" id="card-expiry-year" required>
-    <label for="card-expiry-year">Expiration Year</label>
+            <div class="md-form">
+                <i class="fas fa-map-marked prefix grey-text active"></i>
+                <input type="text" id="address" class="form-control" required name="address">
+                <label data-error="wrong" data-success="right" for="form34">Address</label>
+            </div>
 
-    <input type="text" id="card-cvc" required>
-    <label for="card-cvc">Card CVC</label>
+            <div class="md-form">
+                <i class="fas fa-signature prefix grey-text active"></i>
+                <input type="text" id="card-name" class="form-control" required>
+                <label data-error="wrong" data-success="right" for="card-name">Card Holder Name</label>
+            </div>
 
-    <button type="submit">Buy now</button>
-</form>
+            <div class="md-form">
+                <i class="fas fa-credit-card prefix grey-text active"></i>
+                <input type="text" id="card-number" class="form-control" required>
+                <label data-error="wrong" data-success="right" for="card-number">Credit Card Number</label>
+            </div>
+
+            <div class="md-form">
+                <i class="fas fa-calendar-alt prefix grey-text active"></i>
+                <input type="text" id="card-expiry-month" class="form-control" required>
+                <label data-error="wrong" data-success="right" for="card-expiry-month">Expiration Month</label>
+            </div>
+
+            <div class="md-form">
+                <i class="fas fa-calendar prefix grey-text active"></i>
+                <input type="text" id="card-expiry-year" class="form-control" required>
+                <label data-error="wrong" data-success="right" for="card-expiry-year">Expiration Year</label>
+            </div>
+
+            <div class="md-form">
+                <i class="far fa-credit-card prefix grey-text active"></i>
+                <input type="text" id="card-cvc" class="form-control" required>
+                <label data-error="wrong" data-success="right" for="card-cvc">Card CVC</label>
+            </div>
+
+            <div class="text-center">
+                <span style="font-size: 20px;" class="badge badge-light badge-pill light z-depth-1 ml-1 mr-1 mt-1 mb-2">Your Total: ${{total}} </span>
+            </div>
+
+            <div class="text-center mt-2">
+                <button class="btn btn-indigo waves-effect" type="submit">Buy now</button>
+            </div>
+        </form>
+    </div>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="/javascripts/payment.js"></script>

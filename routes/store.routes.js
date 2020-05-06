@@ -6,7 +6,8 @@ const Cart = require('../models/Cart');
 
 // get home page // /store/home
 router.get('/home', async (req, res) => {
-    res.render('shop/HomePage', { title: 'Shop home page' })
+    const successMsg = req.flash('success')[0];
+    res.render('shop/HomePage', { title: 'Shop home page', successMsg: successMsg, noMessages: !successMsg })
 });
 
 // get products from db and products page // /store/products

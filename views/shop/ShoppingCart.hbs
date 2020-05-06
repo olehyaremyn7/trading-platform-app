@@ -1,12 +1,78 @@
-<h1>Shopping Cart</h1>
+{{> header }}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 {{# if products }}
-    {{# each products }}
-        {{ this.quantity }}
-        {{ this.item.title }}
-        {{ this.price }}
-    {{/each}}
-    <p><strong>Total: {{ totalPrice }} </strong></p>
-    <a type="button" href="/store/checkout">Checkout</a>
-    {{ else }}
-    <p>NO ITEMS IN SHOPPING CART</p>
+    <div class="container">
+        <div class="row mt-4">
+
+            <div class="col-md-6 mb-4 text-center text-md-left">
+                <h1 class="display-4 font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Shopping Cart </h1>
+                <hr style="border-top: 2px solid; width: 1107px;" class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
+            </div>
+
+        </div>
+
+        <div class="mt-3 justify-content-center">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title"><a class="md-left"><strong>Your items:</strong></a></h4>
+                    <hr>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            {{# each products }}
+                                <li class="list-group-item d-flex justify-content-between align-items-center mt-3">
+                                    <strong>{{ this.item.title }}</strong>
+
+                                    <div class="btn-group">
+                                        <button style="font-size: 10px;" class="btn btn-indigo dropdown-toggle mr-4" type="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><b style="font-size: 12px;">Action</b><span class="caret"></span>
+                                        </button>
+
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/reduce/{{ this.item._id }}">Reduce by 1</a>
+                                            <a class="dropdown-item" href="/remove/{{ this.item._id }}">Remove All</a>
+                                        </div>
+                                    </div>
+
+                                    <span style="font-size: 15px;" class="badge badge-success badge-pill success z-depth-1 ml-1 mr-1"><strong>${{ this.price }}</strong></span>
+                                    <span style="font-size: 15px;" class="badge badge-indigo badge-pill indigo z-depth-1 ml-1 mr-1">{{ this.qty }}</span>
+                                </li>
+                            {{/each}}
+                        </div>
+                        <hr>
+
+                        <div class="panel-footer">
+                            <div class="md-left">
+                                <span style="font-size: 20px;" class="badge badge-light badge-pill light z-depth-1 ml-1 mr-1 mt-2 mb-3">Total: ${{ totalPrice }} </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6 mb-4 text-center text-md-left ">
+                            <a href="/store/checkout" class="btn btn-success">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{{ else }}
+        <div class="mask rgba-light d-flex align-items-center mt-5">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-md-12 mb-4 text-center">
+                        <h1 style="font-size: 90px;" class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>No Items in Cart <i class="fas fa-shopping-cart"></i></strong></h1>
+                        <hr style="border-top: 3px solid; width: 880px;" class="hr-dark" data-wow-delay="0.4s">
+                        <h1 style="font-size: 25px;" class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Go to the <a style="color: black;" href="/"><u>homepage</u></a> and select the product which you want!</strong></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {{/if}}

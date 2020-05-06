@@ -1,10 +1,70 @@
-{{# each products }}
-    {{# each this }}
-        {{ this.imagePath }}
-        {{ this.title }}
-        {{ this.category }}
-        {{ this.description }}
-        {{ this.price }}
-        <a href="/store/add-to-cart/{{ this._id }}" role="button">Add to Cart</a>
-    {{/each}}
-{{/each}}
+{{> header}}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<main>
+    <div class="container">
+        <div class="container">
+            <section class="text-center mb-4">
+
+                {{# each products}}
+                    <div class="row wow fadeIn">
+                        {{# each this}}
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="card" style="height: 40rem;">
+
+                                    <div class="view overlay">
+                                        <img class="card-img-top" src="{{ this.imagePath }}" alt="sp">
+                                        <a href="shop/product">
+                                            <div class="mask rgba-white-slight"></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="card-body text-center">
+                                        <a class="grey-text" href="shop/product">
+                                            <h5>{{ this.title }}</h5>
+                                        </a>
+                                        <a href="" class="grey-text">
+                                            <h6>{{ this.category }}</h6>
+                                        </a>
+                                        <h5>
+                                            <strong>
+                                                <a href="#" class="dark-grey-text">{{ this.description }}
+                                                    <span class="badge badge-pill danger-color">NEW</span>
+                                                </a>
+                                            </strong>
+                                        </h5>
+                                        <h4 class="font-weight-bold blue-text">
+                                            <strong>${{ this.price }}</strong>
+                                        </h4>
+                                        <a href="/store/add-to-cart/{{this._id}}" role="button" class="btn btn-lg btn-block btn-outline-success btn-rounded ml-auto waves-effect ">Buy</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button class="btn-top unique-color-dark" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+                        {{/each}}
+                    </div>
+                {{/each}}
+            </section>
+        </div>
+    </div>
+</main>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var $btnTop = $(".btn-top")
+    $(window).on("scroll", function(){
+        if($(window).scrollTop() >= 10) {
+            $btnTop.fadeIn();
+        }
+        else {
+            $btnTop.fadeOut();
+        }
+    });
+
+    $btnTop.on("click", function(){
+        $("html,body").animate({scrollTop:0}, 900)
+    });
+</script>
