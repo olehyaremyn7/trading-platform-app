@@ -28,6 +28,10 @@ app.engine('hbs', handlebars.engine);
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
+// Express Middleware
+app.use(express.json({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -54,7 +58,6 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use(express.json({ extended: true }));
 app.use('/store/authorization', AuthorizationRouter);
 app.use('/store/user', UserRouter);
 app.use('/store/checkout', CheckoutRouter);

@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 // Product model
 const Product = require('../models/Product');
+const UserProduct = require('../models/UserProduct');
 const Cart = require('../models/Cart');
 
 // get home page // /store/home
@@ -13,14 +14,22 @@ router.get('/home', async (req, res) => {
 // get products from db and products page // /store/products
 router.get('/products', async (req, res, next) => {
     try {
-        const products = await Product.find({})
+        const products = await Product.find({});
         res.render('shop/ProductsPage', { title: 'Products Page', products })
     } catch (e) {
         res.status(500).json({ message: 'Сталася помилка, спробуйте знову' })
     }
 });
 
-// get user products page // /shop/user-products
+// get user products page // /store/users-products
+router.get('/users-products', async (req, res) => {
+    try {
+        const userProducts = await UserProduct.find({});
+        res.render('shop/UserProductsPage', { title: 'Users Products Page', userProducts })
+    } catch (e) {
+
+    }
+});
 
 // get route for add product to shopping cart // /store/add-to-cart
 router.get('/add-to-cart/:id', async (req, res) => {

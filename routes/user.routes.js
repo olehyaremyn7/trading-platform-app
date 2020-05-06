@@ -3,10 +3,13 @@ const router = Router();
 const passport = require('passport');
 const Order = require('../models/Order');
 const Cart = require('../models/Cart');
+const UserProduct = require('../models/UserProduct');
 
 // get profile page // /store/user/profile
 router.get('/profile', isLoggedIn, async (req, res) => {
     try {
+        const successMsg = req.flash('success')[0];
+        const errMsg = req.flash('error')[0];
         await Order.find({ user: req.user }, (err, orders) => {
             if (err) {
                 return res.write({ message: err });
@@ -17,10 +20,34 @@ router.get('/profile', isLoggedIn, async (req, res) => {
                 order.items = viewCart.generateArray();
             });
 
-            res.render('user/Profile', { orders: orders });
+            res.render('user/Profile', { orders: orders, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
         });
     } catch (e) {
         console.log({ message: e });
+    }
+});
+
+// the route add-user-product post method adds the user's product to the store // /store/user/add-user-product
+router.post('/add-user-product', async (req, res) => {
+    try {
+        const userProduct = new UserProduct({
+            imagePath: req.body.imagePath,
+            title: req.body.title,
+            category: req.body.category,
+            price: req.body.price,
+            description: req.body.description,
+            user: req.user
+        })
+
+        await userProduct.save((err) => {
+            if (err) {
+                return req.flash('error', 'Сталася помилка при додаванні товару, спробуйте ще раз');
+            }
+            req.flash('success', 'Ви успішно додали товар');
+            res.redirect('/store/user/profile');
+        });
+    } catch (e) {
+
     }
 });
 
