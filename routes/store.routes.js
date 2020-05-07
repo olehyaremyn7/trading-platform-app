@@ -95,4 +95,38 @@ router.get('/shopping-cart', async (req, res) => {
 
 });
 
+//
+router.get('/search', async (req, res) => {
+    try {
+        const successMsg = req.flash('success')[0];
+        const errMsg = req.flash('error')[0];
+
+        if(req.query.search) {
+            const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+            const filteredProducts = await Product.find({ title: regex }, (err, res) => {
+                if (err) {
+                    console.log(err);
+                    res.redirect('/store/search');
+                    return req.flash('error', 'Сталася помилка при пошуку, спробуйте ще раз');
+                }
+            });
+            const filteredUserProducts = await UserProduct.find({ title: regex }, (err, res) => {
+                if (err) {
+                    console.log(err);
+                    res.redirect('/store/search');
+                    return req.flash('error', 'Сталася помилка при пошуку, спробуйте ще раз');
+                }
+            });
+
+            res.render('shop/SearchPage', { title: 'Search Page', filteredProducts: filteredProducts, filteredUserProducts: filteredUserProducts, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg })
+        }
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
 module.exports = router;
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}

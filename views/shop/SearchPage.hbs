@@ -1,0 +1,39 @@
+{{> header}}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<form action="/store/search" method="get" class="form-inline">
+    <div class="form-group container">
+        <input type="text" name="search" placeholder="Search product..." class="form-control">
+        <input type="submit" value="Search" class="btn btn-default">
+    </div>
+</form>
+
+{{# if filteredProducts.length }}
+    {{# each filteredProducts }}
+        {{# each this }}
+            {{ this.imagePath }}
+            {{ this.title }}
+            {{ this.category }}
+            {{ this.price }}
+            {{ this.description }}
+        {{/each}}
+    {{/each}}
+{{ else }}
+    <p class="containet text-align">No Results!</p>
+{{/if}}
+
+
+{{# if filteredUserProducts.length }}
+    {{# each filteredUserProducts }}
+        {{# each this }}
+            {{ this.imagePath }}
+            {{ this.title }}
+            {{ this.category }}
+            {{ this.price }}
+            {{ this.description }}
+        {{/each}}
+    {{/each}}
+{{ else }}
+    <p class="containet text-align">No Results!</p>
+{{/if}}
