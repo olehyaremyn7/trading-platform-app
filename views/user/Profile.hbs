@@ -145,5 +145,36 @@
             {{/each}}
         </div>
 
+        {{# each userProducts}}
+                {{# each this}}
+                        {{ this.imagePath }}
+                        {{ this.title }}
+                        {{ this.category }}
+                        {{ this.description }}
+                        {{ this.price }}
+                    <a href="/store/user/remove-user-product/{{this._id}}" type="button">Delete</a>
+
+                            <form action="/store/user/update-user-product/{{this._id}}" method="post">
+                                        <h4 class="modal-title w-100 font-weight-bold">New User Product</h4>
+                                            <input type="text" id="title" name="title" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="form34">Title</label>
+
+                                            <input type="text" id="category" name="category" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="form34">Categories</label>
+
+                                            <input type="text" id="price" name="price" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="form32">Price</label>
+
+                                            <input type="text" name="imagePath" id="imagePath" class="form-control validate">
+                                            <label data-error="wrong" data-success="right" for="form32">Image path</label>
+
+                                            <textarea type="text" id="form8" name="description" class="md-textarea form-control" rows="4"></textarea>
+                                            <label data-error="wrong" data-success="right" for="form8">Your description</label>
+
+                                        <button type="submit" class="btn btn-unique">Edit your product <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            </form>
+                {{/each}}
+        {{/each}}
+
     </div>
 </div>

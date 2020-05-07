@@ -10,9 +10,11 @@ router.get('/profile', isLoggedIn, async (req, res) => {
     try {
         const successMsg = req.flash('success')[0];
         const errMsg = req.flash('error')[0];
+
+        const userProducts = await UserProduct.find({ user: req.user });
         await Order.find({ user: req.user }, (err, orders) => {
             if (err) {
-                return res.write({ message: err });
+                return req.flash('error', { message: err });
             }
 
             orders.forEach((order) => {
@@ -20,8 +22,9 @@ router.get('/profile', isLoggedIn, async (req, res) => {
                 order.items = viewCart.generateArray();
             });
 
-            res.render('user/Profile', { orders: orders, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
+            res.render('user/Profile', { orders: orders, userProducts: userProducts, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
         });
+
     } catch (e) {
         console.log({ message: e });
     }
@@ -44,6 +47,46 @@ router.post('/add-user-product', async (req, res) => {
                 return req.flash('error', 'Сталася помилка при додаванні товару, спробуйте ще раз');
             }
             req.flash('success', 'Ви успішно додали товар');
+            res.redirect('/store/user/profile');
+        });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+//the route remove-user-product delete method which delete user's product from the store // /store/user/remove-user-product
+router.get('/remove-user-product/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        await UserProduct.findByIdAndRemove(productId, (err) => {
+            if (err) {
+                return req.flash('error', 'Сталася помилка при видаленні товару, спробуйте ще раз');
+            }
+            req.flash('success', 'Ви успішно видалили товар');
+            res.redirect('/store/user/profile');
+        });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+// the route add-user-product post method adds the user's product to the store // /store/user/add-user-product
+router.post('/update-user-product/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const updatedUserProduct = {
+            imagePath: req.body.imagePath,
+            title: req.body.title,
+            category: req.body.category,
+            price: req.body.price,
+            description: req.body.description
+        };
+
+        await UserProduct.findByIdAndUpdate(productId, updatedUserProduct, (err) => {
+            if (err) {
+                return req.flash('error', 'Сталася помилка при редагуванню товару, спробуйте ще раз');
+            }
+            req.flash('success', 'Ви успішно редагували товар');
             res.redirect('/store/user/profile');
         });
     } catch (e) {
