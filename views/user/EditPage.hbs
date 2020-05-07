@@ -1,0 +1,57 @@
+{{> header }}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<div class="container ">
+    <div class="alert alert-danger {{#if noError}}d-none{{/if}}">
+        {{errMsg}}
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 mb-3">
+        <div id="success" role="alert" class="alert alert-success {{#if noMessages}}d-none{{/if}}">
+            {{ successMsg }}
+        </div>
+    </div>
+</div>
+
+<h1>Edit Page</h1>
+
+{{# each user }}
+    {{# each this }}
+            <form action="/store/user/edit-user-info/{{ this._id }}" method="post">
+                <h4 class="modal-title w-100 font-weight-bold">Edit User Info</h4>
+                <input type="text" id="username" name="username" class="form-control validate">
+                <label data-error="wrong" data-success="right" for="form34">Email</label>
+
+                <input type="text" id="password" name="password" class="form-control validate">
+                <label data-error="wrong" data-success="right" for="form34">Password</label>
+
+                <input type="text" id="firstName" name="firstName" class="form-control validate">
+                <label data-error="wrong" data-success="right" for="form34">First Name</label>
+
+                <input type="text" id="lastName" name="lastName" class="form-control validate">
+                <label data-error="wrong" data-success="right" for="form34">Last Name</label>
+
+                <input type="text" id="phone" name="phone" class="form-control validate">
+                <label data-error="wrong" data-success="right" for="form32">Phone number</label>
+
+                <button type="submit" class="btn btn-unique">Edit your info <i class="fas fa-paper-plane-o ml-1"></i></button>
+            </form>
+
+        <form action="/store/user/add-user-info/{{ this._id }}" method="post">
+            <h4 class="modal-title w-100 font-weight-bold">New User Info</h4>
+            <input type="text" id="firstName" name="firstName" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form34">First Name</label>
+
+            <input type="text" id="lastName" name="lastName" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form34">Last Name</label>
+
+            <input type="text" id="phone" name="phone" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form32">Phone number</label>
+
+            <button type="submit" class="btn btn-unique">Add new info <i class="fas fa-paper-plane-o ml-1"></i></button>
+        </form>
+    {{/each}}
+{{/each}}

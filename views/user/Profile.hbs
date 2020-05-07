@@ -28,9 +28,13 @@
                     <h1 style="font-size: 100px;" class="dark-grey-text text-center"><strong>
                         <i class="fas fa-user-circle prefix grey-text"></i>
                     </strong></h1>
-                    <h3 class="dark-grey-text text-center"><strong>Oleh Yaremyn</strong></h3>
-                    <hr class="hr-dark">
 
+                    <hr class="hr-dark">
+                    {{# each user }}
+                        {{# each this }}
+                            <h3 class="dark-grey-text text-center"><strong>{{ this.firstName }}{{ this.lastName }}</strong></h3>
+                        {{/each}}
+                    {{/each}}
                     <div class="modal fade" id="modalCreateNewProductForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -96,8 +100,8 @@
                         <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#modalCreateNewProductForm">Add your product
                             <a href="#"></a>
                         </button>
-                        <button type="button" class="btn btn-indigo btn-rounded">Edit profile
-                            <a href="#"></a>
+                        <button type="button" class="btn btn-indigo btn-rounded">
+                            <a href="/store/user/edit">Edit profile</a>
                         </button>
                     </div>
 
