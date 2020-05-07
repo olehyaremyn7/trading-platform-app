@@ -1,6 +1,6 @@
-const passport = require('passport');
-const User = require('../models/User');
-const LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport'); // Passport is authentication middleware for Node.js.
+const User = require('../models/User'); // import User schema
+const LocalStrategy = require('passport-local').Strategy; // Passport strategy for authenticating with a username and password.
 
 // Passport methods to set the compliance of user authentication req
 passport.serializeUser((user, done) => {
@@ -36,13 +36,16 @@ passport.use('local.signup', new LocalStrategy({
         if (err) {
             return done(err);
         }
+
         if (user) {
             return done(null, false, {message: 'Користувач з такою електронною поштою уже існує'});
         }
+
         const newUser = new User();
         newUser.username = username;
-        newUser.password = newUser.encryptPassword(password);
+        newUser.password = newUser.encryptPassword(password); // call the function to encrypt the password
         newUser.save((err, result) => {
+
             if (err) {
                 return done(err);
             }
@@ -74,9 +77,12 @@ passport.use('local.signin', new LocalStrategy({
         if (err) {
             return done(err);
         }
+
         if (!user) {
             return done(null, false, {message: 'Користувач відсутній'});
         }
+
+        // call the function to check the password
         if (!user.validPassword(password)) {
             return done(null, false, {message: 'Невірний пароль'});
         }

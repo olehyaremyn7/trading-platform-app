@@ -21,9 +21,10 @@ const schema = new Schema({
         type: Number,
         required: true
     },
+    // a link to a user id in MongoDb from the collection User who will add the item // binding of goods to the user
     user: {
         type: Schema.Types.ObjectId, ref: 'User'
     },
 });
 
-module.exports = model('UserProduct', schema);
+module.exports = model('UserProduct', schema); // 'UserProduct' name of MongoDB collection and exports UserProduct schema

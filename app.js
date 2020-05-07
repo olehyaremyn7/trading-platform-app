@@ -1,13 +1,13 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const config = require('config');
-const cookieParser = require('cookie-parser');
+const express = require('express'); // express.js library
+const mongoose = require('mongoose'); // mongoose for work with MongoDB
+const config = require('config'); // config library
+const cookieParser = require('cookie-parser'); // cookie-parser library to work with cookie
 const bodyParser = require('body-parser');
-const session = require('express-session');
-const passport = require('passport');
-const flash = require('connect-flash');
-const expressValidator = require('express-validator');
-const expressHandlebars = require('express-handlebars');
+const session = require('express-session'); // express-session library to work with session
+const passport = require('passport'); // Passport is authentication middleware for Node.js.
+const flash = require('connect-flash'); // flash messages
+const expressValidator = require('express-validator'); // forms validation
+const expressHandlebars = require('express-handlebars'); // presentation engine for best working with views
 const MongoStore = require('connect-mongo')(session); // for session
 // Routes initialization
 const StoreRouter = require('./routes/store.routes');
@@ -29,25 +29,25 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 // Express Middleware
-app.use(express.json({ extended: true }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ extended: true })); // for using json
+app.use(express.urlencoded({ extended: true })); // requests to the view body
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressValidator());
-app.use(cookieParser());
-app.use(session({
+app.use(expressValidator()); // forms validation
+app.use(cookieParser()); // for using cookies
+app.use(session({ // session settings
     secret: 'storeappsecret',
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: new MongoStore({ mongooseConnection: mongoose.connection }), // connect session to the database
     cookie: { maxAge: 180 * 60 * 1000 }
 }));
 app.use(flash()); // flash messages
-app.use(passport.initialize());
-app.use(passport.session());
-// public folder
+app.use(passport.initialize()); // passport initialize
+app.use(passport.session()); // passport access to the session
+// public folder connection
 app.use(express.static(__dirname + '/public'));
 
 // global property which available in views
@@ -58,12 +58,12 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/store/authorization', AuthorizationRouter);
-app.use('/store/user', UserRouter);
-app.use('/store/checkout', CheckoutRouter);
-app.use('/store', StoreRouter);
+app.use('/store/authorization', AuthorizationRouter); // authorization uri
+app.use('/store/user', UserRouter); // user uri
+app.use('/store/checkout', CheckoutRouter); // checkout uri
+app.use('/store', StoreRouter); // store uri
 
-// Connection to MongoDB
+// async function start to connect to the database and start server
 const start = async () => {
     try {
         await mongoose.connect(config.get('mongoURI'), {
@@ -73,12 +73,12 @@ const start = async () => {
             useFindAndModify: false
         });
 
-        app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+        app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`));
     } catch (e) {
         console.log('Server Error', e.message);
-        process.exit(1)
+        process.exit(1);
     }
-}
+};
 
-// Start server
+// call function which start server
 start();

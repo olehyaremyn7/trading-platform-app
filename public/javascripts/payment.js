@@ -1,7 +1,9 @@
-Stripe.setPublishableKey('pk_test_oLxFDkYwrohPWDAs7avXKWqO003rIENluo');
+Stripe.setPublishableKey('pk_test_oLxFDkYwrohPWDAs7avXKWqO003rIENluo'); // Stripe public key
 
+// connect payment form by #id
 const #form = $('#checkout-form');
 
+// JQuery is used to extract data from the form
 $form.submit(function(event) {
     $('#charge-error').addClass('hidden');
     $form.find('button').prop('disabled', true);
@@ -15,6 +17,7 @@ $form.submit(function(event) {
     return false;
 });
 
+// function for response and error checks
 function stripeResponseHandler (status, response) {
     if (response.error) { // Problem!
         // Show the errors on the form
@@ -34,3 +37,5 @@ function stripeResponseHandler (status, response) {
         $form.get(0).submit();
     }
 }
+
+// https://stripe.com/docs/stripe-js/v2

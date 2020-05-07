@@ -23,4 +23,4 @@ const schema = new Schema({
     }
 });
 
-module.exports = model('Product', schema);
+module.exports = model('Product', schema); // 'Product' name of MongoDB collection and exports Product schema

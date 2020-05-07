@@ -1,23 +1,26 @@
-const { Router } = require('express');
+const { Router } = require('express'); // express router for work with routes
 const router = Router();
-// Product model
-const Product = require('../models/Product');
-const UserProduct = require('../models/UserProduct');
-const Cart = require('../models/Cart');
+const Product = require('../models/Product'); // import Product schema
+const UserProduct = require('../models/UserProduct'); // import User schema
+const Cart = require('../models/Cart'); // import Cart schema
 
 // get home page // /store/home
 router.get('/home', async (req, res) => {
-    const successMsg = req.flash('success')[0];
-    res.render('shop/HomePage', { title: 'Shop home page', successMsg: successMsg, noMessages: !successMsg })
+    try {
+        const successMsg = req.flash('success')[0];
+        await res.render('shop/HomePage', { title: 'Shop home page', successMsg: successMsg, noMessages: !successMsg });
+    } catch (e) {
+        console.log({ message: e });
+    }
 });
 
 // get products from db and products page // /store/products
 router.get('/products', async (req, res, next) => {
     try {
         const products = await Product.find({});
-        res.render('shop/ProductsPage', { title: 'Products Page', products })
+        await res.render('shop/ProductsPage', { title: 'Products Page', products });
     } catch (e) {
-        res.status(500).json({ message: 'Сталася помилка, спробуйте знову' })
+        console.log({ message: e });
     }
 });
 
@@ -25,13 +28,31 @@ router.get('/products', async (req, res, next) => {
 router.get('/users-products', async (req, res) => {
     try {
         const userProducts = await UserProduct.find({});
-        res.render('shop/UserProductsPage', { title: 'Users Products Page', userProducts })
+        await res.render('shop/UserProductsPage', { title: 'Users Products Page', userProducts });
     } catch (e) {
-
+        console.log({ message: e });
     }
 });
 
-// get route for add product to shopping cart // /store/add-to-cart
+// get about-us page // /store/about-us
+router.get('/about-us', async (req, res) => {
+    try {
+        await res.render('shop/AboutUsPage', { title: 'About us page' });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+// get blog page // /store/blog
+router.get('/blog', async (req, res) => {
+    try {
+        await res.render('shop/BlogPage', { title: 'Blog page' });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+// get route for add product to shopping cart by id // /store/add-to-cart
 router.get('/add-to-cart/:id', async (req, res) => {
      try {
          const productId = req.params.id;
@@ -42,7 +63,7 @@ router.get('/add-to-cart/:id', async (req, res) => {
                  return res.redirect('/store/home');
              }
 
-             cart.addToCart(product, product.id)
+             cart.addToCart(product, product.id);
              req.session.cart = cart;
              console.log(req.session.cart);
              res.redirect('/store/home');
@@ -52,7 +73,7 @@ router.get('/add-to-cart/:id', async (req, res) => {
      }
 });
 
-// get reduce method which reduce one item from cart
+// get reduce method which reduce one item from cart by id // /store/reduce
 router.get('/reduce/:id', async (req, res) => {
     try {
         const productId = req.params.id;
@@ -66,7 +87,7 @@ router.get('/reduce/:id', async (req, res) => {
     }
 });
 
-// get remove method which remove all items from cart
+// get remove method which remove all items from cart by id // /store/remove
 router.get('/remove/:id', async (req, res, next) => {
     try {
         const productId = req.params.id;
@@ -84,18 +105,17 @@ router.get('/remove/:id', async (req, res, next) => {
 router.get('/shopping-cart', async (req, res) => {
     try {
         if (!req.session.cart) {
-            return res.render('shop/ShoppingCart', { products: null });
+            return res.render('shop/ShoppingCartPage', { products: null });
         }
 
         const cart = await new Cart(req.session.cart);
-        res.render('shop/ShoppingCart', { products: cart.generateArray(), totalPrice: cart.totalPrice });
+        res.render('shop/ShoppingCartPage', { products: cart.generateArray(), totalPrice: cart.totalPrice });
     } catch (e) {
         console.log({ message: e });
     }
-
 });
 
-//
+// get search page where we can see search results // /store/search
 router.get('/search', async (req, res) => {
     try {
         const successMsg = req.flash('success')[0];
@@ -127,6 +147,7 @@ router.get('/search', async (req, res) => {
 
 module.exports = router;
 
+// function for valid search data
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }

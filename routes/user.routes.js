@@ -1,11 +1,11 @@
-const { Router } = require('express');
+const { Router } = require('express'); // express router for work with routes
 const router = Router();
-const passport = require('passport');
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
-const Order = require('../models/Order');
-const Cart = require('../models/Cart');
-const UserProduct = require('../models/UserProduct');
+const passport = require('passport'); // Passport is authentication middleware for Node.js.
+const bcrypt = require('bcrypt'); // password encryption library
+const User = require('../models/User'); // import User schema
+const Order = require('../models/Order'); // import Oder schema
+const Cart = require('../models/Cart'); // import Cart schema
+const UserProduct = require('../models/UserProduct'); // import UserProduct schema
 
 // get profile page // /store/user/profile
 router.get('/profile', isLoggedIn, async (req, res) => {
@@ -13,8 +13,9 @@ router.get('/profile', isLoggedIn, async (req, res) => {
         const successMsg = req.flash('success')[0];
         const errMsg = req.flash('error')[0];
 
-        const user = await User.find({ _id: req.user })
+        const user = await User.find({ _id: req.user });
         const userProducts = await UserProduct.find({ user: req.user });
+
         await Order.find({ user: req.user }, (err, orders) => {
             if (err) {
                 return req.flash('error', { message: err });
@@ -25,7 +26,7 @@ router.get('/profile', isLoggedIn, async (req, res) => {
                 order.items = viewCart.generateArray();
             });
 
-            res.render('user/Profile', { orders: orders, userProducts: userProducts, user: user, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
+            res.render('user/ProfilePage', { orders: orders, userProducts: userProducts, user: user, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
         });
 
     } catch (e) {
@@ -33,7 +34,7 @@ router.get('/profile', isLoggedIn, async (req, res) => {
     }
 });
 
-//
+// get edit page // /store/user/edit
 router.get('/edit', isLoggedIn, async (req, res) => {
     try {
         const user = await User.find({ _id: req.user });
@@ -43,7 +44,7 @@ router.get('/edit', isLoggedIn, async (req, res) => {
     }
 });
 
-//
+// the route add-user-info post method for add new user info by user id in the system (first name, last name and phone number) // /store/user/add-user-info
 router.post('/add-user-info/:id', isLoggedIn, async (req, res) => {
     try {
         const userId = req.params.id;
@@ -66,12 +67,12 @@ router.post('/add-user-info/:id', isLoggedIn, async (req, res) => {
     }
 });
 
-//
+// the route edit-user-info post method for edit user info by user id in the system (email, password, first name, last name and phone number) // /store/user/edit-user-info
 router.post('/edit-user-info/:id', isLoggedIn, async (req, res) => {
     try {
         const userId = req.params.id;
         const password = req.body.password;
-        const hashedPassword = await bcrypt.hashSync(password, 5);
+        const hashedPassword = await bcrypt.hashSync(password, 5); // re-encrypt the new password
         const updatedUserInfo = {
             username: req.body.username,
             password: hashedPassword,
@@ -102,7 +103,7 @@ router.post('/add-user-product', isLoggedIn, async (req, res) => {
             price: req.body.price,
             description: req.body.description,
             user: req.user
-        })
+        });
 
         await userProduct.save((err) => {
             if (err) {
@@ -156,7 +157,7 @@ router.post('/update-user-product/:id', isLoggedIn, async (req, res) => {
     }
 });
 
-// route get method for logout from system
+// route get method for logout from system // /store/user/logout
 router.get('/logout', isLoggedIn, async (req, res) => {
    try {
        await req.logout();

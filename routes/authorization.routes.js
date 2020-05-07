@@ -1,23 +1,31 @@
-const { Router } = require('express');
+const { Router } = require('express'); // express router for work with routes
 const router = Router();
-const csrf = require('csurf');
-const passport = require('passport');
+const csrf = require('csurf'); // csrf protection library
+const passport = require('passport'); // Passport is authentication middleware for Node.js.
 
 // csrf protection middleware
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
-router.use('/store/authorization', notLoggedIn, (req, res, next) => {
-   next();
+router.use('/store/authorization', notLoggedIn, async (req, res, next) => {
+    try {
+        await next();
+    } catch (e) {
+        console.log({ message: e });
+    }
 });
 
-// get csrfToken route when we render SignUp page /store/authorization/signup
-router.get('/signup', (req, res) => {
-    const messages = req.flash('error');
-    res.render('user/SignUp', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 })
+// get csrfToken route when we render SignUp page // /store/authorization/signup
+router.get('/signup', async (req, res) => {
+    try {
+        const messages = req.flash('error');
+        await res.render('user/RegistrationPage', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
+    } catch (e) {
+        console.log({ message: e });
+    }
 });
 
-// signup post method and passport middleware for registration
+// signup post method and passport middleware for registration // /store/authorization/signup
 router.post('/signup', passport.authenticate('local.signup', {
     failureRedirect: '/store/authorization/signup',
     failureFlash: true
@@ -31,13 +39,17 @@ router.post('/signup', passport.authenticate('local.signup', {
     }
 });
 
-// get csrfToken route when we render SignIn page /store/authorization/signin
-router.get('/signin', (req, res) => {
-    const messages = req.flash('error');
-    res.render('user/SignIn', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 })
+// get csrfToken route when we render SignIn page // /store/authorization/signin
+router.get('/signin', async (req, res) => {
+    try {
+        const messages = req.flash('error');
+        await res.render('user/LoginPage', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
+    } catch (e) {
+        console.log({ message: e });
+    }
 });
 
-// signup post method and passport middleware for login
+// signup post method and passport middleware for login // /store/authorization/signin
 router.post('/signin', passport.authenticate('local.signin', {
     failureRedirect: '/store/authorization/signin',
     failureFlash: true
@@ -51,13 +63,9 @@ router.post('/signin', passport.authenticate('local.signin', {
     }
 });
 
-router.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/store/home');
-});
-
 module.exports = router;
 
+// function for check if user login in the system
 function notLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
