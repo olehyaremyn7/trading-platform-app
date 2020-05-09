@@ -3,26 +3,188 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <main>
-    <section>
+    <section class="intro-wrapper">
+        <div class="intro-img">
+            <div class="intro-container">
+                <div><h2 class="intro-text">Are you looking for a unique product?</h2></div>
+                <div><h2 class="intro-text">Want to sell yours?</h2></div>
+                <div><h2 class="intro-text">Then welcome to our online store!</h2></div>
+                <div><h2 class="intro-text"><b>Alligator Store.</b> Everything is bought and sold!</h2></div>
+                <div><p class="intro-text-first-p">Lorem ipsum dolor sit amet, consectetur.</p></div>
+                <div><p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
+                <div><p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, molestias?</p></div>
+                <div><p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque laborum magni maxime!</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats wrapper">
         <div class="container">
-            <h1>Home page</h1>
-            <div class="row justify-content-center">
-                <div class="col-sm-6 mb-3">
-                    <div id="success" role="alert" class="alert alert-success {{#if noMessages}}d-none{{/if}}">
-                        {{ successMsg }}
+            <div class="row">
+                <div class="stats-text">
+                    <h2>Statistics of our <br> online store</h2>
+                    <h3>First, who we are?</h3>
+                    <p>We are new online store where you can buy goods for every taste and need.
+                        <br>We will develop and improve your interaction with the website</p>
+                    <h3>But at the moment we have good statistics</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        <br> Dolorum eligendi maxime quo tenetur voluptate? Commodi!</p>
+                </div>
+
+                <div class="stats-num">
+                    <div class="stats-line">
+                        <div class="square">
+                            <span class="stats-square">100+</span>
+                            <span class="square-text">Active users</span>
+                        </div>
+                        <div class="square">
+                            <span class="stats-square">100+</span>
+                            <span class="square-text">Products</span>
+                        </div>
+                    </div>
+
+                    <div class="stats-line">
+                        <div class="square">
+                            <span class="stats-square">200+</span>
+                            <span class="square-text">Users products</span>
+                        </div>
+                        <div class="square">
+                            <span class="stats-square">200+</span>
+                            <span class="square-text">Executed orders</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="adv-wrapper adv-img">
+        <div class="adv-container container">
+            <div class="adv-title">
+                <div><h2>Every day, thanks to us, <br>our users sell their products</h2></div>
+                <div><h2>Start and you!</h2></div>
+                <div class="adv-text">
+                    <div><p>See what other users are selling</p></div>
+                </div>
+            </div>
+
+            <div class="adv-buttons">
+                <div class="shop-now" type="button"><a href="/store/products">Shop now</a></div>
+                <div class="start-now" type="button"><a href="/store/authorization/signup">Start selling</a></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps">
+        <div class="container">
+            <div class="wrapper">
+                <h2>How to make a purchase?</h2>
+                <p class="steps-text">There are 3 steps to make a purchase!</p>
+                <p class="steps-text m-bottom-text">Everything is very simple and interactive, <br>
+                    we will help you! <br>Have a nice shopping!</p>
+                <div class="steps-container">
+                    <div class="stepblock" id="stepbl1">
+                        <p class="step-num">01</p>
+                        <h4><span>01</span>Choose a product</h4>
+                        <p class="step-info">Go to the products tab, select <br>the product you <br>want to buy and click buy.
+                            <br>Your product will be added<br>to the cart.</p>
+                        <a href="/store/products" class="stepinfolast" id="stepbrdr1">Click here to go to the Products tab</a>
+                    </div>
+
+                    <div class="stepblock"  id="stepbl2">
+                        <p class="step-num">02</p>
+                        <h4><span>02</span>Log in</h4>
+                        <p class="step-info">To make a purchase on the site, <br>log in.
+                            If you are not registered <br>yet, we will be happy if you do.</p>
+                        <a href="/store/authorization/signin" class="stepinfolast-2" id="stepbrdr2">Click here to Log in</a>
+                    </div>
+
+                    <div class="stepblock"  id="stepbl3" >
+                        <p class="step-num">03</p>
+                        <h4><span>03</span>Place an order</h4>
+                        <p class="step-info">If you have logged in, you can <br>place an order.
+                            Go to the cart <br>and click the button to place <br>an order.</p>
+                        <a href="/store/shopping-cart" class="stepinfolast-3" id="stepbrdr3">Click here to go to the Cart tab</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-wrapper news-img">
+        <div class="news-container container">
+            <div class="news-title">
+                <div><h2>Get Our</h2></div>
+                <div><h2>Latest Offers News</h2></div>
+                <div class="news-text">
+                    <div><p>Subscribe news latter</p></div>
+                </div>
+            </div>
+
+            <div class="news-email-input">
+                <form>
+                    <input class="sub-top" type="text" placeholder="Enter your email here...">
+                    <input class="sub-bottom" type="submit" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-block">
+        <div class="product-block-container">
+            <div class="blocks-line">
+                <div class="block block-img-1">
+                    <div><h2><a href="/store/products" type="button">Products</a></h2></div>
+                </div>
+                <div class="block block-img-2">
+                    <div><h2><a href="#" type="button">User Products</a></h2></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="items">
+        <div class="container">
+            <div class="benefit-items">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="/images/icon-1.png" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Free Shipping</h6>
+                                <p>For all order over 99$</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="/images/icon-2.png" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Delivery On Time</h6>
+                                <p>If good have prolems</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="/images/icon-3.png" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Secure Payment</h6>
+                                <p>100% secure payment</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
-
-<form action="/store/search" method="get" class="form-inline">
-    <div class="form-group container">
-        <input type="text" name="search" placeholder="Search product..." class="form-control">
-        <input type="submit" value="Search" class="btn btn-default">
-    </div>
-</form>
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -41,3 +203,4 @@
         $("html,body").animate({scrollTop:0}, 900)
     });
 </script>
+{{> footer}}

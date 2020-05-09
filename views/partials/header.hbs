@@ -1,74 +1,74 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
-        <div class="container">
-            <a href="/store/home" class="navbar-brand waves-effect"><strong class="unique-color-dark-text">
-                <i class="fas fa-shopping-bag"></i> ᴇᴀꜱʏꜱʜᴏᴘ</strong>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collaps navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link active waves-effect" href="/store/home"><strong><i class="fas fa-home"></i> Home</strong></a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active waves-effect" href="/store/products">Products</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="/store/about-us" class="nav-link waves-effect">About us</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active waves-effect" href="/store/blog">Blog</a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item active">
-                        <a class="nav-link waves-effect" href="/store/shopping-cart/"><strong>
-                            <i class="fas fa-shopping-cart"></i> <span class="clearfix d-none d-sm-inline-block">Shopping Cart</span></strong>
-                            <span class="badge red z-depth-1 ml-1 mr-1">{{session.cart.totalQty}}</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-extended="false"><strong><i class="fas fa-user"></i><span class="clearfix d-none d-sm-inline-block">User Management</span></strong></a>
-
-                        <div class="dropdown-menu" aria-labelleby="navbarDropdownMenuLink">
+    <nav class="nav-wrapper">
+        <div class="top-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="email-info">
+                            <i class="fas fa-envelope"></i> oleg.benderg@gramil.com
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="phone-info">
+                            <p><i class="fas fa-phone-alt"></i> +380 68 66 43 426 <a class="social" href="#"><i class="fab fa-facebook social-other"></i></a> <a class="social-other" href="#"><i class="fab fa-twitter"></i></a> <a class="social-other" href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-instagram"></i></a> </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="user-authorization">
                             {{# if login }}
-                                <a class="dropdown-item v" href="/store/user/profile"><i class="fas fa-user-circle"></i> User Account</a>
-                                <a class="dropdown-item waves-effect" href="/store/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                <a class="user-signup" href="/store/user/profile"><i class="fas fa-user-circle mr-2"></i>Profile</a>
+                                <a class="user-signin" href="/store/user/logout"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
                             {{ else }}
-                                <a class="dropdown-item waves-effect" href="/store/authorization/signup"><i class="fas fa-user-plus"></i> Sign up</a>
-                                <a class="dropdown-item waves-effect" href="/store/authorization/signin"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+                                <a class="user-signup" href="/store/authorization/signup"><i class="far fa-user mr-2"></i>Registration</a>
+                                <a class="user-signin" href="/store/authorization/signin"><i class="fas fa-user mr-2"></i>Login</a>
                             {{/if}}
                         </div>
-
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="https://uk-ua.facebook.com/" class="nav-link waves-effect">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="https://twitter.com/" class="nav-link waves-effect">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="https://www.instagram.com/" class="nav-link border border-light rounded waves-effect">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="middle-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="logo">
+                            Aligator Store
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <form action="/store/search" method="get">
+                                <input type="text" name="search" placeholder="Search products...">
+                                <input type="submit" value="Search">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="wish">
+                            <a href="#"><i class="far fa-heart"></i></a>
+                            <span class="badge badge-dark"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="cart">
+                            <a href="/store/shopping-cart"><i class="fas fa-shopping-cart"></i></a>
+                            <span class="badge badge-dark mr-1">{{session.cart.totalQty}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="bottom-nav">
+            <div class="container">
+                <div class="navigation">
+                    <a href="/store/home" class="navigation__link">Home</a>
+                    <a href="/store/products" class="navigation__link">Products</a>
+                    <a href="/store/checkout" class="navigation__link">Checkout</a>
+                    <a href="/store/about-us" class="navigation__link">About us</a>
+                    <a href="/store/blog" class="navigation__link">Blog</a>
+                </div>
             </div>
         </div>
     </nav>
