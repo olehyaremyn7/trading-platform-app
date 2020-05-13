@@ -8,7 +8,7 @@ const Cart = require('../models/Cart'); // import Cart schema
 router.get('/home', async (req, res) => {
     try {
         const successMsg = req.flash('success')[0];
-        await res.render('shop/HomePage', { title: 'Shop home page', successMsg: successMsg, noMessages: !successMsg });
+        await res.render('shop/HomePage', { title: 'Aligator Store | Home', successMsg: successMsg, noMessages: !successMsg });
     } catch (e) {
         console.log({ message: e });
     }
@@ -17,8 +17,8 @@ router.get('/home', async (req, res) => {
 // get products from db and products page // /store/products
 router.get('/products', async (req, res, next) => {
     try {
-        const products = await Product.find({});
-        await res.render('shop/ProductsPage', { title: 'Products Page', products });
+        const products = await Product.find({}).lean();
+        await res.render('shop/ProductsPage', { title: 'Aligator Store | Products', products });
     } catch (e) {
         console.log({ message: e });
     }
@@ -27,8 +27,18 @@ router.get('/products', async (req, res, next) => {
 // get user products page // /store/users-products
 router.get('/users-products', async (req, res) => {
     try {
-        const userProducts = await UserProduct.find({});
-        await res.render('shop/UserProductsPage', { title: 'Users Products Page', userProducts });
+        const userProducts = await UserProduct.find({}).lean();
+        await res.render('shop/UserProductsPage', { title: 'Aligator Store | Users Products', userProducts });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+// get product page // /store/product/id
+router.get('/product/:id', async (req, res) => {
+    try {
+        const singleProduct = await Product.find({ _id: req.params.id }).lean();
+        res.render('shop/ProductPage', { title: 'Aligator Store | Product', singleProduct });
     } catch (e) {
         console.log({ message: e });
     }
@@ -37,16 +47,16 @@ router.get('/users-products', async (req, res) => {
 // get about-us page // /store/about-us
 router.get('/about-us', async (req, res) => {
     try {
-        await res.render('shop/AboutUsPage', { title: 'About us page' });
+        await res.render('shop/AboutUsPage', { title: 'Aligator Store | About Us' });
     } catch (e) {
         console.log({ message: e });
     }
 });
 
 // get blog page // /store/blog
-router.get('/blog', async (req, res) => {
+router.get('/contact', async (req, res) => {
     try {
-        await res.render('shop/BlogPage', { title: 'Blog page' });
+        await res.render('shop/ContactPage', { title: 'Aligator Store | Contact' });
     } catch (e) {
         console.log({ message: e });
     }
@@ -105,11 +115,11 @@ router.get('/remove/:id', async (req, res, next) => {
 router.get('/shopping-cart', async (req, res) => {
     try {
         if (!req.session.cart) {
-            return res.render('shop/ShoppingCartPage', { products: null });
+            return res.render('shop/ShoppingCartPage', { title: 'Aligator Store | Cart', products: null });
         }
 
         const cart = await new Cart(req.session.cart);
-        res.render('shop/ShoppingCartPage', { products: cart.generateArray(), totalPrice: cart.totalPrice });
+        res.render('shop/ShoppingCartPage', { title: 'Aligator Store | Cart', products: cart.generateArray(), totalPrice: cart.totalPrice });
     } catch (e) {
         console.log({ message: e });
     }
@@ -129,16 +139,16 @@ router.get('/search', async (req, res) => {
                     res.redirect('/store/search');
                     return req.flash('error', 'Сталася помилка при пошуку, спробуйте ще раз');
                 }
-            });
+            }).lean();
             const filteredUserProducts = await UserProduct.find({ title: regex }, (err, res) => {
                 if (err) {
                     console.log(err);
                     res.redirect('/store/search');
                     return req.flash('error', 'Сталася помилка при пошуку, спробуйте ще раз');
                 }
-            });
+            }).lean();
 
-            res.render('shop/SearchPage', { title: 'Search Page', filteredProducts: filteredProducts, filteredUserProducts: filteredUserProducts, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg })
+            res.render('shop/SearchPage', { title: 'Aligator Store | Products', filteredProducts, filteredUserProducts, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg })
         }
     } catch (e) {
         console.log({ message: e });

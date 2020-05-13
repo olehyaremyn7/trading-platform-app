@@ -1,0 +1,70 @@
+{{> header}}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        {{#each singleProduct}}<span class="breadcrumb-login">{{ title }}</span>{{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="product-page-wrapper">
+        <div class="product-page-container container">
+            <div class="product-page-row row">
+                {{#each singleProduct}}
+                        <div class="col-lg-5">
+                            <div class="product-page-left-container">
+                                <div class="product-page-left-img">
+                                    <img src="{{ imagePath }}" alt="">
+                                </div>
+                                <hr>
+                                <h4>Payment:</h4>
+                                <p>Cash</p>
+                                <p>Online card payment</p>
+                                <h4>Guarantee</h4>
+                                <p>Exchange / return of goods within 14 days</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-page-right-container">
+                                <div class="product-page-right-title">
+                                    <h2>{{ title }}</h2>
+                                </div>
+                                <div class="product-page-right-available">
+                                    <span>in stock</span> <i class="fas fa-store-alt"></i>
+                                </div>
+                                <div class="product-page-right-price">
+                                    <h3>{{ this.price }}$</h3>
+                                </div>
+                                <div class="product-page-right-description">
+                                    <h4>Description</h4>
+                                    <p>{{ description }}</p>
+                                </div>
+                                <div class="product-page-right-category">
+                                    <h4>{{ category }}</h4>
+                                </div>
+                                <div class="product-page-right-btn">
+                                    <a class="product-page-right-btn-add-to-cart" type="button" href="/store/add-to-cart/{{ this._id }}">
+                                        Add to Cart
+                                    </a>
+                                    <span><a class="product-page-right-btn-heart" href="#"><i style="color: red" class="far fa-heart"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{{> footer }}

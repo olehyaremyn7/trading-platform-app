@@ -2,19 +2,73 @@
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<h1>Sign Up</h1>
-{{#if hasErrors }}
-    {{# each messages }}
-        <p>{{ this }}</p>
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Registration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-wrapper">
+        <div class="container">
+            {{#if hasErrors }}
+            <div class="alert alert-danger " role="alert">
+            {{# each messages }}
+        {{ this }}
     {{/each}}
-{{/if}}
-<form action="/store/authorization/signup" method="post">
-    <label for="email">Email</label>
-    <input type="text" id="username" name="username">
-    <hr>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password">
-    <hr>
-    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-    <button type="submit">Sign Up</button>
-</form>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <section class="registration-wrapper">
+        <div class="registration-container container">
+            <div class="row registration-rows">
+                <div class="col-lg-6">
+                    <div class="registration-left">
+                        <div class="top-text">
+                            <h2>Welcome!</h2>
+                            <p class="first-p">We are glad that you have decided <br>to register and become our new client.</p>
+                            <p>Have a good day.</p>
+                        </div>
+                        <div class="bottom-text">
+                            <h2>Problems?</h2>
+                            <p class="first-p">Let us know about the problem and <br>we will try to help you.</p>
+                            <a class="contact-us-btn" type="button" href="/store/contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="registration-form">
+                        <div class="registration-title">
+                            <h2><i class="far fa-user mr-2"></i>Registration</h2>
+                        </div>
+                        <form action="/store/authorization/signup" method="post">
+                            <div class="email-input">
+                                <label for="username"><i class="fas fa-envelope mr-2"></i>Email address</label>
+                                <input type="text" id="username" name="username" placeholder="Please, enter your email...">
+                            </div>
+                            <div class="password-input">
+                                <label for="password"><i class="fas fa-key mr-2"></i>Password</label>
+                                <input type="password" id="password" name="password" placeholder="Please, enter your password...">
+                            </div>
+                            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                            <button type="submit" class="signup-btn">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{{> footer}}

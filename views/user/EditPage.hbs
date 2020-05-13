@@ -2,56 +2,94 @@
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<div class="container ">
-    <div class="alert alert-danger {{#if noError}}d-none{{/if}}">
-        {{errMsg}}
-    </div>
-</div>
-
-<div class="row justify-content-center">
-    <div class="col-sm-6 mb-3">
-        <div id="success" role="alert" class="alert alert-success {{#if noMessages}}d-none{{/if}}">
-            {{ successMsg }}
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Edit</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<h1>Edit Page</h1>
+    <section class="edit-page-wrapper">
+        <div class="edit-page-container container">
+            <div class="edit-page-row row">
+                <div class="col-lg-6">
+                    <div class="edit-page-add-new-info-container">
+                        <div class="add-new-info-form">
+                            <div class="add-new-info-form-title">
+                                <h2>Add new info</h2>
+                            </div>
+                            <div class="add-new-info-form-text">
+                                <p>Please fill in all fields.</p>
+                            </div>
+                            {{#each user}}
+                                <form action="/store/user/add-user-info/{{ this._id }}" method="post">
+                                    <div class="add-new-info-form-first-name">
+                                        <label for="firstName"><i class="fas fa-address-card mr-2"></i>First name</label>
+                                        <input type="text" name="firstName" id="firstName" placeholder="Please, enter your first name...">
+                                    </div>
+                                    <div class="add-new-info-form-last-name">
+                                        <label for="lastName"><i class="far fa-address-card mr-2"></i>Last name</label>
+                                        <input type="text" name="lastName" id="lastName" placeholder="Please, enter your last name...">
+                                    </div>
+                                    <div class="add-new-info-form-phone-number">
+                                        <label for="phone"><i class="fas fa-mobile mr-2"></i>Phone number</label>
+                                        <input type="text" name="phone" id="phone" placeholder="Please, enter your phone number...">
+                                    </div>
+                                    <button type="submit" class="add-new-info-form-btn">Add new information</button>
+                                </form>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="edit-page-edit-info-container">
+                        <div class="edit-info-form">
+                            <div class="edit-info-form-title">
+                                <h2>Edit info</h2>
+                            </div>
+                            <div class="edit-info-form-text">
+                                <p>Please fill in all fields.</p>
+                            </div>
+                            {{#each user}}
+                                <form action="/store/user/edit-user-info/{{ this._id }}" method="post">
+                                    <div class="edit-info-form-email">
+                                        <label for="username"><i class="fas fa-envelope mr-2"></i>Email address</label>
+                                        <input type="text" id="username" name="username" placeholder="Please, enter your new email...">
+                                    </div>
+                                    <div class="edit-info-form-password">
+                                        <label for="password"><i class="fas fa-key mr-2"></i>Password</label>
+                                        <input type="password" id="password" name="password" placeholder="Please, enter your new password...">
+                                    </div>
+                                    <div class="edit-info-form-first-name">
+                                        <label for="firstName"><i class="fas fa-address-card mr-2"></i>First name</label>
+                                        <input type="text" name="firstName" id="firstName" placeholder="Please, enter your new first name...">
+                                    </div>
+                                    <div class="edit-info-form-last-name">
+                                        <label for="lastName"><i class="far fa-address-card mr-2"></i>Last name</label>
+                                        <input type="text" name="lastName" id="lastName" placeholder="Please, enter your new last name...">
+                                    </div>
+                                    <div class="edit-info-form-phone-number">
+                                        <label for="phone"><i class="fas fa-mobile mr-2"></i>Phone number</label>
+                                        <input type="text" name="phone" id="phone" placeholder="Please, enter your new phone number...">
+                                    </div>
+                                    <button type="submit" class="edit-info-form-btn">Edit information</button>
+                                </form>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-{{# each user }}
-    {{# each this }}
-            <form action="/store/user/edit-user-info/{{ this._id }}" method="post">
-                <h4 class="modal-title w-100 font-weight-bold">Edit User Info</h4>
-                <input type="text" id="username" name="username" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="form34">Email</label>
+</main>
 
-                <input type="text" id="password" name="password" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="form34">Password</label>
-
-                <input type="text" id="firstName" name="firstName" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="form34">First Name</label>
-
-                <input type="text" id="lastName" name="lastName" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="form34">Last Name</label>
-
-                <input type="text" id="phone" name="phone" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="form32">Phone number</label>
-
-                <button type="submit" class="btn btn-unique">Edit your info <i class="fas fa-paper-plane-o ml-1"></i></button>
-            </form>
-
-        <form action="/store/user/add-user-info/{{ this._id }}" method="post">
-            <h4 class="modal-title w-100 font-weight-bold">New User Info</h4>
-            <input type="text" id="firstName" name="firstName" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="form34">First Name</label>
-
-            <input type="text" id="lastName" name="lastName" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="form34">Last Name</label>
-
-            <input type="text" id="phone" name="phone" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="form32">Phone number</label>
-
-            <button type="submit" class="btn btn-unique">Add new info <i class="fas fa-paper-plane-o ml-1"></i></button>
-        </form>
-    {{/each}}
-{{/each}}
+{{> footer }}

@@ -2,38 +2,110 @@
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<form action="/store/search" method="get" class="form-inline">
-    <div class="form-group container">
-        <input type="text" name="search" placeholder="Search product..." class="form-control">
-        <input type="submit" value="Search" class="btn btn-default">
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Search</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
 
-{{# if filteredProducts.length }}
-    {{# each filteredProducts }}
-        {{# each this }}
-            {{ this.imagePath }}
-            {{ this.title }}
-            {{ this.category }}
-            {{ this.price }}
-            {{ this.description }}
-        {{/each}}
-    {{/each}}
-{{ else }}
-    <p class="containet text-align">No Results!</p>
-{{/if}}
+    <section class="search-page-wrapper">
+        <div class="search-page-container container">
+            <div class="search-page-row row">
+                <div class="col-lg-9">
+                    <div class="search-page-products-container">
+                        <div class="search-page-result-title">
+                            <h3>Search results:</h3>
+                        </div>
+                        <div class="search-page-products-list">
+                            <div class="search-page-products-cards">
+                                {{#if filteredProducts.length }}
+                                    {{#each filteredProducts }}
+                                            <div class="product-card">
+                                                <div class="card-img">
+                                                    <img src="{{ imagePath }}" alt="#">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="card-title">
+                                                        <a href="#">{{ title }}</a>
+                                                    </div>
+                                                    <div class="card-price">
+                                                        <p class="product-card-price">{{ price }}$</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="card-button">
+                                                        <button><a href="/store/add-to-cart/{{ this._id }}">Add to Cart</a></button>
+                                                    </div>
+                                                    <div class="card-icons">
+                                                        <span><a href="#"><i style="color: black" class="far fa-heart"></i></a></span>
+                                                        <span><i class="fas fa-store-alt"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    {{/each}}
+                                {{ else }}
+                                    <section class="shopping-cart-empty-wrapper">
+                                        <div class="shopping-cart-empty-container container">
+                                            <div class="shopping-cart-empty-top-text">
+                                                <h2>Nothing was found among the products of the store!</h2>
+                                            </div>
+                                            <hr class="shopping-cart-empty-hr">
+                                        </div>
+                                    </section>
+                                {{/if}}
 
+                                {{#if filteredUserProducts.length }}
+                                    {{#each filteredUserProducts }}
+                                            <div class="product-card">
+                                                <div class="card-img">
+                                                    <img src="{{ imagePath }}" alt="#">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="card-title">
+                                                        <a href="#">{{ title }}</a>
+                                                    </div>
+                                                    <div class="card-price">
+                                                        <p class="product-card-price">{{ price }}$</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="card-button">
+                                                        <button><a href="/store/add-to-cart/{{ this._id }}">Add to Cart</a></button>
+                                                    </div>
+                                                    <div class="card-icons">
+                                                        <span><a href="#"><i style="color: black" class="far fa-heart"></i></a></span>
+                                                        <span><i class="fas fa-user"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    {{/each}}
+                                {{ else }}
+                                    <section class="shopping-cart-empty-wrapper">
+                                        <div class="shopping-cart-empty-container container">
+                                            <div class="shopping-cart-empty-top-text">
+                                                <h2>Nothing was found among the users' products!</h2>
+                                            </div>
+                                            <hr class="shopping-cart-empty-hr">
+                                        </div>
+                                    </section>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-{{# if filteredUserProducts.length }}
-    {{# each filteredUserProducts }}
-        {{# each this }}
-            {{ this.imagePath }}
-            {{ this.title }}
-            {{ this.category }}
-            {{ this.price }}
-            {{ this.description }}
-        {{/each}}
-    {{/each}}
-{{ else }}
-    <p class="containet text-align">No Results!</p>
-{{/if}}
+</main>
+
+{{> footer }}

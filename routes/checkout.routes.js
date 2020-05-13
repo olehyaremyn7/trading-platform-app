@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         }
 
         const cart = await new Cart(req.session.cart);
-        res.render('checkout/CheckoutPage', { total: cart.totalPrice });
+        res.render('checkout/CheckoutPage', { title: 'Aligator Store | Checkout', total: cart.totalPrice });
     } catch (e) {
         console.log({ message: e });
     }
@@ -22,7 +22,7 @@ router.get('/payment', isLoggedIn, async (req, res) => {
      try {
          const errMsg = req.flash('error')[0];
          const cart = await new Cart(req.session.cart);
-         res.render('checkout/PaymentPage', { total: cart.totalPrice, errMsg: errMsg, noError: !errMsg });
+         res.render('checkout/PaymentPage', { title: 'Aligator Store | Payment', total: cart.totalPrice, errMsg: errMsg, noError: !errMsg });
      } catch (e) {
          console.log({ message: e });
      }
@@ -56,6 +56,9 @@ router.post('/payment', isLoggedIn, async (req, res) => {
                     cart: cart,
                     address: req.body.address,
                     name: req.body.name,
+                    lastname: req.body.lastname,
+                    phonenum: req.body.phonenum,
+                    city: req.body.city,
                     paymentId: charge.id
                 });
 

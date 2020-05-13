@@ -14,6 +14,15 @@ const schema = new Schema({
     name: {
         type: String, required: true
     },
+    lastname: {
+        type: String, required: true
+    },
+    phonenum: {
+        type: String, required: true
+    },
+    city: {
+        type: String, required: true
+    },
     paymentId: {
         type: String, required: true
     }

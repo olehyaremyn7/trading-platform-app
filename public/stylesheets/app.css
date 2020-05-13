@@ -1,7 +1,68 @@
 body {
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli', sans-serif !important;
 }
 
+.cart .span-badge-cart {
+    margin-left: 10px;
+    padding: 6px 14px 6px 14px;
+    font-size: 20px;
+    border: none;
+    background: black;
+    color: white;
+}
+
+/*********************************
+BREADCRUMB  SECTION
+ ********************************/
+
+.breadcrumb-text {
+    border-bottom: 1px solid grey;
+    padding: 15px 0;
+}
+
+.breadcrumb-text.product-more a:nth-child(1):after {
+    color: black;
+}
+
+.breadcrumb-text a {
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+    margin-right: 15px;
+    position: relative;
+    text-decoration: none;
+}
+
+.breadcrumb-login {
+    margin-left: 15px;
+}
+
+.breadcrumb-text a:after {
+    position: absolute;
+    right: -18px;
+    top: 0;
+    font-size: 16px;
+    color: #b2b2b2;
+}
+
+.breadcrumb-text span {
+    display: inline-block;
+    color: #b2b2b2;
+}
+
+/*********************************
+ALERT  WRAPPER
+ ********************************/
+
+.alert-wrapper {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.alert {
+    border-radius: 0;
+}
 
 /***************************
 NAV
@@ -765,4 +826,2067 @@ FOOTER  SECTION
 
 .copyright-reserved .payment-pic {
     float: right;
+}
+
+/*********************************
+CONTACT PAGE
+ ********************************/
+
+.contact-page-wrapper {
+    margin-top: 50px;
+}
+
+.contact-page-map-title h3 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.contact-page-bottom-container {
+    margin-top: 50px;
+}
+
+.contact-page-form .contact-page-form-title h4 {
+    text-align: start;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.contact-page-form-text p {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.contact-page-form form .contact-form-name {
+    margin-bottom: 15px;
+}
+
+.contact-page-form form .contact-form-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.contact-page-form form .contact-form-name input {
+    display: block;
+    height: 60px;
+    width: 90%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.contact-page-form form .contact-form-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-page-form form .contact-form-email {
+    margin-bottom: 20px;
+}
+
+.contact-page-form form .contact-form-email label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.contact-page-form form .contact-form-email input {
+    display: block;
+    height: 60px;
+    width: 90%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.contact-page-form form .contact-form-email input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-page-form form .contact-form-textarea {
+    margin-bottom: 10px;
+}
+
+.contact-page-form form .contact-form-textarea textarea {
+    display: block;
+    height: 200px;
+    width: 90%;
+    padding: 15px 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+    resize: none;
+}
+
+.contact-page-form form .contact-form-textarea textarea:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-btn .contact-form-btn-send-message {
+    text-transform: uppercase;
+    margin-top: 25px;
+    background: black;
+    color: white;
+    width: 90%;
+    height: 65px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
+
+.contact-form-btn .contact-form-btn-send-message:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+.contact-page-bottom-right-container {
+    margin-left: 40px;
+}
+
+.contact-page-contacts-title h4 {
+    text-align: start;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.contact-page-contacts-text p {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.contact-page-contacts-cards .contacts-card {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-page-contacts-cards .contacts-card {
+    padding: 10px 0 10px 0;
+    width: 100%;
+    background: white;
+    color: black;
+    margin: 0 0 11px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-page-contacts-cards .contacts-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.contacts-card-icon {
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.contacts-card-icon i {
+    font-size: 20px;
+}
+
+.contacts-card-text {
+    margin-left: 15px;
+    margin-top: 18px;
+}
+
+.contacts-card-text span {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.contacts-card-text p {
+    font-size: 16px;
+}
+
+/*********************************
+LOGIN  SECTION
+ ********************************/
+
+.login-container {
+    margin-top: 100px;
+    justify-content: space-between;
+}
+
+.login-left .top-text {
+    margin-bottom: 35px;
+}
+
+.login-left .top-text h2 {
+    font-size: 45px;
+    font-weight: 800;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.login-left .top-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.first-p {
+    margin-top: 20px;
+}
+
+.login-left .bottom-text h2 {
+    font-size: 45px;
+    font-weight: bold;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.login-left .bottom-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.login-left .create-account {
+    margin-top: 25px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 25px 50px 25px 50px;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.create-account:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+}
+
+.login-form .login-title h2{
+    text-align: center;
+    margin-top: 5px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.login-form form .email-input {
+    margin-bottom: 25px;
+}
+
+.login-form form .email-input label{
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.login-form form .email-input input{
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.login-form form .email-input input:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form form .password-input {
+    margin-bottom: 15px;
+}
+
+.login-form form .password-input label{
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.login-form form .password-input input{
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+.password-input input:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-attributes {
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: black;
+    text-decoration: none;
+}
+
+.signin-btn {
+    background: black;
+    color: white;
+    width: 100%;
+    height: 65px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    text-transform: uppercase;
+}
+
+.signin-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+.signin-btn:focus {
+    outline: none;
+}
+
+/*********************************
+REGISTRATION  SECTION
+ ********************************/
+
+.registration-container {
+    margin-top: 100px;
+    justify-content: space-between;
+}
+
+.registration-left .top-text {
+    margin-bottom: 35px;
+}
+
+.registration-left .top-text h2 {
+    font-size: 45px;
+    font-weight: 800;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.registration-left .top-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.registration-left .first-p {
+    margin-top: 20px;
+}
+
+.registration-left .bottom-text h2 {
+    font-size: 45px;
+    font-weight: bold;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.registration-left .bottom-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.registration-left .contact-us-btn {
+    margin-top: 20px;
+    font-size: 20px;
+    background: black;
+    color: #ffffff;
+    padding: 25px 50px 25px 50px;
+    display: inline-block;
+    text-align: center;
+}
+
+.registration-left .contact-us-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+}
+
+.registration-form .registration-title h2{
+    text-align: center;
+    margin-top: 5px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.registration-form form .email-input {
+    margin-bottom: 25px;
+}
+
+.registration-form form .email-input label{
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.registration-form form .email-input input{
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.registration-form form .email-input input:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form form .password-input {
+    margin-bottom: 15px;
+}
+
+.registration-form form .password-input label{
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.registration-form form .password-input input{
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+.registration-form .password-input input:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form .signup-btn {
+    background: black;
+    color: white;
+    width: 100%;
+    height: 65px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    margin-top: 15px;
+}
+
+.registration-form .signup-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+.registration-form .signup-btn:focus {
+    outline: none;
+}
+
+/*********************************
+CART PAGE
+ ********************************/
+
+.cart-table {
+    margin-top: 70px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.cart-table .cart-thead {
+    border-bottom: 2px solid black;
+}
+
+.cart-table .cart-thead tr th {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 0;
+    color: black;
+}
+
+.cart-table .cart-tbody td {
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    font-size: 18px;
+}
+
+.cart-table th .th-product-name {
+    text-align: left;
+}
+
+.cart-table th .th-product-quantity {
+    padding-left: 30px;
+}
+
+.cart-table .cart-tbody .cart-tr-tbody .td-product-quantity {
+    padding-left: 20px;
+}
+
+.cart-table .cart-tbody .cart-tr-tbody .td-product-reduce .reduce-icon {
+    margin-right: 15px;
+    color: black;
+    margin-left: 15px;
+}
+
+.cart-table .cart-tbody .cart-tr-tbody .td-product-reduce .remove-icon {
+    margin-right: -7px;
+    color: black;
+}
+
+.cart-btn {
+    padding: 35px 0;
+}
+
+.cart-btn .cart-btn-total h3 {
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+.cart-btn-row-bottom {
+    display: flex;
+    flex-direction: row;
+    margin-left: 280px;
+    margin-top: -15px;
+}
+
+.cart-btn-checkout-btn {
+    padding: 18px 30px 18px 30px;
+    background: black;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cart-btn-checkout-btn:hover {
+    color: black;
+    background: white;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+.shopping-cart-empty-container {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.shopping-cart-empty-top-text h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.shopping-cart-empty-hr {
+    width: 70%
+}
+
+.shopping-cart-empty-bottom-text h3 {
+    text-align: center;
+}
+
+.shopping-cart-empty-bottom-text h3 a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+/*********************************
+PROFILE PAGE
+ ********************************/
+
+.user-profile-header {
+    margin-top: 50px;
+}
+
+.user-profile-info-user-field {
+    margin-top: 10px;
+}
+
+.user-profile-info-user-field h4 {
+    font-weight: 700;
+}
+
+.user-profile-info-btn {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+}
+
+.user-profile-info-add-product-btn {
+    padding: 10px 15px 10px 15px;
+    background: black;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.user-profile-info-add-product-btn:hover {
+    color: black;
+    background: white;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+.user-profile-info-btn-add {
+    margin-right: 20px;
+}
+
+.user-profile-info-edit-page-btn {
+    padding: 10px 15px 10px 15px;
+    background: black;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.user-profile-info-edit-page-btn:hover {
+    color: black;
+    background: white;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+.user-profile-user-items {
+    margin-top: 50px;
+}
+
+.user-products-table {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.user-products-table .user-products-thead {
+    border-bottom: 2px solid black;
+}
+
+.user-products-table .user-products-thead tr th{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 0;
+    color: black;
+}
+
+.user-products-table .user-products-tbody td {
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    font-size: 18px;
+}
+
+.user-products-table .user-products-tr-thead .th-user-products-title {
+    text-align: left;
+    padding-right: 60px;
+}
+
+.user-products-table .user-products-tr-thead .th-user-products-price {
+    padding-right: 20px;
+}
+
+.user-products-table .user-products-tr-thead .th-user-products-edit {
+    text-align: end;
+    padding-left: 70px;
+}
+
+.user-products-table .user-products-tr-thead .th-user-products-delete {
+    text-align: end;
+}
+
+.user-products-table .user-products-tbody .user-products-tr-tbody .td-user-products-title {
+    text-align: left;
+    padding-right: 60px;
+}
+
+.user-products-table .user-products-tbody .user-products-tr-tbody .td-user-products-price {
+    padding-right: 20px;
+}
+
+.user-products-table .user-products-tbody .user-products-tr-tbody .td-user-products-update {
+    text-align: end;
+    padding-left: 70px;
+}
+
+.user-products-table .user-products-tbody .user-products-tr-tbody .td-user-products-delete {
+    text-align: end;
+}
+
+.user-products-table .user-products-tbody .user-products-tr-tbody .td-user-products-delete .delete-icon {
+    color: black;
+    margin-right: 7px;
+}
+
+.user-products-table .user-products-tbody .user-products-tr-tbody .td-user-products-update .update-icon {
+    color: black;
+    margin-left: 15px;
+}
+
+.user-profile-user-products .user-profile-user-products-not {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.user-profile-user-orders-title {
+    margin-top: 50px;
+}
+
+.user-orders-table {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.user-orders-table .user-orders-thead {
+    border-bottom: 2px solid black;
+}
+
+.user-orders-table .user-orders-thead tr th{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 0;
+    color: black;
+}
+
+.user-orders-table .user-orders-tbody td {
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    font-size: 18px;
+}
+
+.user-orders-table .user-orders-tr-thead .th-user-orders-title {
+    text-align: left;
+    padding-right: 40px;
+}
+
+.user-orders-table .user-orders-tr-thead .th-user-orders-price {
+    padding-left: 40px;
+}
+
+.user-orders-table .user-orders-tbody .user-orders-tr-tbody .td-user-orders-title {
+    text-align: left;
+    padding-right: 40px;
+}
+
+.user-orders-table .user-orders-tbody .user-orders-tr-tbody .td-user-orders-price {
+    padding-left: 40px;
+}
+
+.user-orders-total h5 {
+    font-weight: 700;
+}
+
+.user-profile-user-orders .user-profile-user-orders-not {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+/*********************************
+EDIT PAGE
+ ********************************/
+
+.edit-page-container {
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
+.add-new-info-form-title h2 {
+    margin-top: 5px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.edit-info-form-title h2 {
+    margin-top: 5px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.add-new-info-form-text p {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.edit-info-form-text p {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.add-new-info-form form .add-new-info-form-first-name {
+    margin-bottom: 25px;
+}
+
+.add-new-info-form form .add-new-info-form-first-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.add-new-info-form form .add-new-info-form-first-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.add-new-info-form form .add-new-info-form-first-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-new-info-form form .add-new-info-form-last-name {
+    margin-bottom: 25px;
+}
+
+.add-new-info-form form .add-new-info-form-last-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.add-new-info-form form .add-new-info-form-last-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.add-new-info-form form .add-new-info-form-last-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-new-info-form form .add-new-info-form-phone-number {
+    margin-bottom: 25px;
+}
+
+.add-new-info-form form .add-new-info-form-phone-number label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.add-new-info-form form .add-new-info-form-phone-number input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.add-new-info-form form .add-new-info-form-phone-number input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-new-info-form-btn {
+    background: black;
+    color: white;
+    width: 100%;
+    height: 65px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
+
+.add-new-info-form-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+.edit-info-form form .edit-info-form-email {
+    margin-bottom: 25px;
+}
+
+.edit-info-form form .edit-info-form-email label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.edit-info-form form .edit-info-form-email input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.edit-info-form form .edit-info-form-email input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-info-form form .edit-info-form-password {
+    margin-bottom: 25px;
+}
+
+.edit-info-form form .edit-info-form-password label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.edit-info-form form .edit-info-form-password input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.edit-info-form form .edit-info-form-password input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-info-form form .edit-info-form-first-name {
+    margin-bottom: 25px;
+}
+
+.edit-info-form form .edit-info-form-first-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.edit-info-form form .edit-info-form-first-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.edit-info-form form .edit-info-form-first-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-info-form form .edit-info-form-last-name {
+    margin-bottom: 25px;
+}
+
+.edit-info-form form .edit-info-form-last-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.edit-info-form form .edit-info-form-last-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.edit-info-form form .edit-info-form-last-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-info-form form .edit-info-form-phone-number {
+    margin-bottom: 25px;
+}
+
+.edit-info-form form .edit-info-form-phone-number label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.edit-info-form form .edit-info-form-phone-number input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.edit-info-form form .edit-info-form-phone-number input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-info-form-btn {
+    background: black;
+    color: white;
+    width: 100%;
+    height: 65px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
+
+.edit-info-form-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+/*********************************
+PRODUCTS PAGE
+ ********************************/
+
+.breadcrumb-user-products {
+    margin-left: 760px;
+    color: black;
+    font-weight: bold;
+}
+
+.products-page-container {
+    margin-top: 70px;
+}
+
+.sidebar-widget {
+    margin-bottom: 50px;
+}
+
+.sidebar-widget-title {
+    color: black;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.widget-category-select form select {
+    display: block;
+    height: 50px;
+    width: 80%;
+    padding: 0 5px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.widget-category-select form select:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.widget-category-select form button {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 10px 15px 10px 15px;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.widget-category-select form button:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+    outline: none;
+}
+
+
+.widget-sort-checkbox form {
+    position: relative;
+}
+
+.widget-sort-checkbox-input {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+}
+
+.widget-sort-checkbox-label {
+    font-size: 14px;
+    color: black;
+    padding-left: 25px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.widget-sort-checkbox-label:before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.widget-sort-checkbox-label:after {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url("images/check.svg") no-repeat;
+    background-size: 16px 16px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.widget-sort-checkbox-input:checked + .widget-sort-checkbox-label:before{
+    background-color: black;
+    border-color: black;
+}
+
+.widget-sort-checkbox-input:checked + .widget-sort-checkbox-label:after{
+    opacity: 1;
+}
+
+.widget-sort-checkbox form button {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 10px 15px 10px 15px;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.widget-sort-checkbox form button:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+    outline: none;
+}
+
+.widget-state-checkbox form {
+    position: relative;
+}
+
+.widget-state-checkbox-input {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+}
+
+.widget-state-checkbox-label {
+    font-size: 14px;
+    color: black;
+    padding-left: 25px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.widget-state-checkbox-label:before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.widget-state-checkbox-label:after {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url("images/check.svg") no-repeat;
+    background-size: 16px 16px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.widget-state-checkbox-input:checked + .widget-state-checkbox-label:before{
+    background-color: black;
+    border-color: black;
+}
+
+.widget-state-checkbox-input:checked + .widget-state-checkbox-label:after{
+    opacity: 1;
+}
+
+.widget-state-checkbox form button {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 10px 15px 10px 15px;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.widget-state-checkbox form button:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+    outline: none;
+}
+
+.widget-price-input form .widget-price-input-label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.widget-price-input form .widget-price-input-input {
+    display: block;
+    height: 40px;
+    width: 60%;
+    padding: 0 5px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.widget-price-input form .widget-price-input-input:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.widget-price-input form button {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 10px 15px 10px 15px;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.widget-price-input form button:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+    outline: none;
+}
+
+.products-cards {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 30px;
+}
+
+.products-page-items {
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.product-card {
+    max-width: 348px;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.1);
+    background-color: white;
+}
+
+.product-card .card-img img {
+    max-width: 348px;
+    max-height: 348px;
+    background-size: cover;
+}
+
+.card-body .card-title a{
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.card-body .card-price p {
+    font-size: 20px;
+    color: black;
+}
+
+.card-footer {
+    margin-top: -30px;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+}
+
+.card-footer .card-button button {
+    background: black;
+    color: white;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
+
+.card-footer .card-button button a {
+    color: white;
+    text-decoration: none;
+}
+
+.card-footer .card-icons i{
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.card-footer .card-icons span:first-child {
+    margin-right: 10px;
+}
+
+/*********************************
+SEARCH PAGE
+ ********************************/
+
+.search-page-container {
+    margin-top: 40px;
+}
+
+.search-page-result-title h3 {
+    font-weight: 700;
+}
+
+.search-page-products-list {
+    margin-top: 40px;
+}
+
+.search-page-products-cards {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 33px;
+    grid-row-gap: 30px;
+}
+
+.search-page-empty-container {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.search-page-empty-text h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.search-page-empty-hr {
+    width: 35%
+}
+
+.search-not-results {
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+/*********************************
+CHECKOUT PAGE
+ ********************************/
+
+.checkout-page-container {
+    margin-top: 100px;
+}
+
+.checkout-page-right-container {
+    margin-top: 10px;
+    justify-content: end;
+    text-align: end;
+    margin-bottom: 50px;
+}
+
+.checkout-page-right-container .checkout-page-right-top-text {
+    margin-bottom: 35px;
+}
+
+.checkout-page-right-container .checkout-page-right-top-text h2 {
+    font-size: 45px;
+    font-weight: 800;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.checkout-page-right-container .checkout-page-right-top-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.checkout-page-right-container .checkout-page-right-bottom-text h2 {
+    font-size: 45px;
+    font-weight: bold;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.checkout-page-right-container .checkout-page-right-bottom-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.checkout-page-left-bottom-text-btn {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 25px 50px 25px 50px;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.checkout-page-left-bottom-text-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+}
+
+.checkout-page-form .checkout-page-form-title h2 {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.checkout-page-form form .checkout-form-info-first-name {
+    margin-bottom: 25px;
+}
+
+.checkout-page-form form .checkout-form-info-first-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.checkout-page-form form .checkout-form-info-first-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.checkout-page-form form .checkout-form-info-first-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-page-form form .checkout-form-info-last-name {
+    margin-bottom: 25px;
+}
+
+.checkout-page-form form .checkout-form-info-last-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.checkout-page-form form .checkout-form-info-last-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.checkout-page-form form .checkout-form-info-last-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-page-form form .checkout-form-info-phone-number {
+    margin-bottom: 25px;
+}
+
+.checkout-page-form form .checkout-form-info-phone-number label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.checkout-page-form form .checkout-form-info-phone-number input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.checkout-page-form form .checkout-form-info-phone-number input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-page-form form .checkout-form-info-city {
+    margin-bottom: 25px;
+}
+
+.checkout-page-form form .checkout-form-info-city label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.checkout-page-form form .checkout-form-info-city input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.checkout-page-form form .checkout-form-info-city input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-page-form form .checkout-form-info-address {
+    margin-bottom: 25px;
+}
+
+.checkout-page-form form .checkout-form-info-address label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.checkout-page-form form .checkout-form-info-address input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.checkout-page-form form .checkout-form-info-address input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form-info-total span {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.checkout-form-info-btn {
+    text-transform: uppercase;
+    margin-top: 25px;
+    background: black;
+    color: white;
+    width: 100%;
+    height: 65px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
+
+.checkout-form-info-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+/*********************************
+PAYMENT PAGE
+********************************/
+
+.payment-page-container {
+    margin-top: 100px;
+}
+
+.payment-page-left-container .payment-page-left-top-text {
+    margin-bottom: 35px;
+}
+
+.payment-page-left-container .payment-page-left-top-text h2 {
+    font-size: 45px;
+    font-weight: 800;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.payment-page-left-container .payment-page-left-top-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.payment-page-left-container .payment-page-left-bottom-text h2 {
+    font-size: 45px;
+    font-weight: bold;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 0 13px;
+}
+
+.payment-page-left-container .payment-page-left-bottom-text img {
+    height: 100px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.payment-page-left-container .payment-page-left-bottom-text p {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.payment-page-left-bottom-text-btn {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 25px 50px 25px 50px;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.payment-page-left-bottom-text-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+}
+
+.payment-page-form .payment-page-form-title h2 {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-name {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-last-name {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-last-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-last-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-last-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-phone-number {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-phone-number label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-phone-number input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-phone-number input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-city {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-city label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-city input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-city input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-address {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-address label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-address input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-address input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-card-name {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-card-name label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-card-name input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-card-name input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-card-number {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-card-number label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-card-number input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-card-number input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-card-expiry-month {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-card-expiry-month label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-card-expiry-month input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-card-expiry-month input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-card-expiry-year {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-card-expiry-year label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-card-expiry-year input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-card-expiry-year input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-page-form form .payment-form-info-card-cvc {
+    margin-bottom: 25px;
+}
+
+.payment-page-form form .payment-form-info-card-cvc label {
+    display: block;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.payment-page-form form .payment-form-info-card-cvc input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
+}
+
+.payment-page-form form .payment-form-info-card-cvc input:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-form-info-total span {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.payment-form-info-btn {
+    text-transform: uppercase;
+    margin-top: 25px;
+    background: black;
+    color: white;
+    width: 100%;
+    height: 65px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
+
+.payment-form-info-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+}
+
+/*********************************
+PRODUCT PAGE
+ ********************************/
+
+.product-page-container {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.product-page-left-container .product-page-left-img img {
+    height: 400px;
+}
+
+.product-page-right-container {
+    margin-left: 100px;
+    margin-top: 65px;
+}
+
+.product-page-right-title h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.product-page-right-available span {
+    padding: 10px 20px 10px 20px;
+    background: limegreen;
+    border: 1px solid limegreen;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-page-right-available span:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-page-right-available i {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.product-page-right-price h3 {
+    margin-top: 30px;
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.product-page-right-description h4 {
+    margin-top: 30px;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.product-page-right-description p {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.product-page-right-category h4 {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.product-page-right-btn-add-to-cart {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 25px 50px 25px 50px;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.product-page-right-btn-add-to-cart:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+}
+
+.product-page-right-btn-heart {
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.product-page-left-container h4 {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.product-page-left-container p {
+    padding: 10px 20px 10px 20px;
+    background: black;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline;
+    margin-bottom: 10px;
 }

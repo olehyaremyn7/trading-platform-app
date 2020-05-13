@@ -2,6 +2,93 @@
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<h1>Checkout</h1>
-<h4>Your Total: {{ total }} $</h4>
-<a href="/store/checkout/payment">Payment</a>
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Checkout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div class="alert-wrapper">
+        <div class="container">
+            <div class="alert alert-success " role="alert">
+                A simple success alert—check it out!
+            </div>
+        </div>
+    </div>
+    -->
+
+    <section class="checkout-page-wrapper">
+        <div class="checkout-page-container container">
+            <div class="checkout-page-row row">
+                <div class="col-lg-6">
+                    <div class="checkout-page-left-container">
+                        <div class="checkout-page-form">
+                            <div class="checkout-page-form-title">
+                                <h2><i class="fas fa-shopping-bag mr-2"></i>
+                                    Checkout Details
+                                </h2>
+                            </div>
+                            <form action="#">
+                                <div class="checkout-form-info-first-name">
+                                    <label for="fname"><i class="fas fa-address-card mr-2"></i>First Name</label>
+                                    <input type="text" id="fname" placeholder="Please, enter your first name..." required name="fname">
+                                </div>
+                                <div class="checkout-form-info-last-name">
+                                    <label for="lname"><i class="far fa-address-card mr-2"></i>Last Name</label>
+                                    <input type="text" id="lname" placeholder="Please, enter your last name..." required name="lname">
+                                </div>
+                                <div class="checkout-form-info-phone-number">
+                                    <label for="phone-n"><i class="fas fa-mobile mr-2"></i>Phone number</label>
+                                    <input type="text" id="phone-n" placeholder="Please, enter your phone number..." required name="phone-n">
+                                </div>
+                                <div class="checkout-form-info-city">
+                                    <label for="city"><i class="fas fa-city mr-2"></i>Town / City</label>
+                                    <input type="text" id="city" placeholder="Please, enter your town / city..." required name="city">
+                                </div>
+                                <div class="checkout-form-info-address">
+                                    <label for="address"><i class="fas fa-map-marked mr-2"></i>Post address</label>
+                                    <input type="text" id="address" placeholder="Please, enter your address..." required name="address">
+                                </div>
+                                <div class="checkout-form-info-total">
+                                    <span>Your Total: {{ total }}</span>
+                                </div>
+                                <button type="submit" class="checkout-form-info-btn">To order</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="checkout-page-right-container">
+                        <div class="checkout-page-right-top-text">
+                            <h2>Thanks for your purchase!</h2>
+                            <p class="first-p">We are glad that you have <br>chosen our online store.</p>
+                            <p>Please enter your checkout <br> details to place your order.</p>
+                            <p>After that, our manager <br> will contact you.</p>
+                            <p>Have a good day.</p>
+                        </div>
+                        <div class="checkout-page-right-bottom-text">
+                            <h2>Online payment</h2>
+                            <p class="first-p">If you want to place an order <br> and pay for it online, click <br> the button below.</p>
+                            <a class="checkout-page-left-bottom-text-btn" type="button" href="/store/checkout/payment">
+                                Online payment
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{{> footer }}

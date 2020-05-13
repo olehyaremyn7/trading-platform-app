@@ -2,69 +2,115 @@
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<div class="container">
-        <form action="/store/checkout/payment" method="post" id="checkout-form">
-            <h3 class="dark-grey-text text-center mt-2 mb-2"><strong>
-                <i class="fab fa-cc-visa prefix grey-text"></i>
-                Payment Details</strong></h3>
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="alert-wrapper">
+        <div class="container">
             <div id="charge-error" class="alert alert-danger {{#if noError}}d-none{{/if}}">
                 {{errMsg}}
             </div>
-
-            <hr>
-
-            <div class="md-form">
-                <i class="fas fa-envelope prefix grey-text active"></i>
-                <input type="text" id="name" class="form-control" required name="name">
-                <label data-error="wrong" data-success="right" for="form34">Name</label>
-            </div>
-
-            <div class="md-form">
-                <i class="fas fa-map-marked prefix grey-text active"></i>
-                <input type="text" id="address" class="form-control" required name="address">
-                <label data-error="wrong" data-success="right" for="form34">Address</label>
-            </div>
-
-            <div class="md-form">
-                <i class="fas fa-signature prefix grey-text active"></i>
-                <input type="text" id="card-name" class="form-control" required>
-                <label data-error="wrong" data-success="right" for="card-name">Card Holder Name</label>
-            </div>
-
-            <div class="md-form">
-                <i class="fas fa-credit-card prefix grey-text active"></i>
-                <input type="text" id="card-number" class="form-control" required>
-                <label data-error="wrong" data-success="right" for="card-number">Credit Card Number</label>
-            </div>
-
-            <div class="md-form">
-                <i class="fas fa-calendar-alt prefix grey-text active"></i>
-                <input type="text" id="card-expiry-month" class="form-control" required>
-                <label data-error="wrong" data-success="right" for="card-expiry-month">Expiration Month</label>
-            </div>
-
-            <div class="md-form">
-                <i class="fas fa-calendar prefix grey-text active"></i>
-                <input type="text" id="card-expiry-year" class="form-control" required>
-                <label data-error="wrong" data-success="right" for="card-expiry-year">Expiration Year</label>
-            </div>
-
-            <div class="md-form">
-                <i class="far fa-credit-card prefix grey-text active"></i>
-                <input type="text" id="card-cvc" class="form-control" required>
-                <label data-error="wrong" data-success="right" for="card-cvc">Card CVC</label>
-            </div>
-
-            <div class="text-center">
-                <span style="font-size: 20px;" class="badge badge-light badge-pill light z-depth-1 ml-1 mr-1 mt-1 mb-2">Your Total: ${{total}} </span>
-            </div>
-
-            <div class="text-center mt-2">
-                <button class="btn btn-indigo waves-effect" type="submit">Buy now</button>
-            </div>
-        </form>
+        </div>
     </div>
+
+    <section class="payment-page-wrapper">
+        <div class="payment-page-container container">
+            <div class="payment-page-row row">
+                <div class="col-lg-6">
+                    <div class="payment-page-left-container">
+                        <div class="payment-page-left-top-text">
+                            <h2>Thanks for your purchase!</h2>
+                            <p class="first-p">We are glad that you have <br>chosen our online store.</p>
+                            <p>Please enter your payment <br> details and pay for your purchase.</p>
+                            <p>Have a good day.</p>
+                        </div>
+                        <div class="payment-page-left-bottom-text">
+                            <h2>power by</h2> <br>
+                            <img src="images/stripe-logo.png" alt="">
+                            <p>Want to know more about <br> the service?</p>
+                            <a class="payment-page-left-bottom-text-btn" type="button" href="https://stripe.com/">
+                                Learn more
+                                <i class="fab fa-stripe-s ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="payment-page-right-container">
+                        <div class="payment-page-form">
+                            <div class="payment-page-form-title">
+                                <h2><i class="fab fa-cc-visa mr-2"></i>
+                                    Payment Details
+                                </h2>
+                            </div>
+                            <form action="/store/checkout/payment" method="post" id="checkout-form">
+                                <div class="payment-form-info-name">
+                                    <label for="name"><i class="fas fa-envelope mr-2"></i>First Name</label>
+                                    <input type="text" id="name" placeholder="Please, enter your first name..." required name="name">
+                                </div>
+                                <div class="payment-form-info-last-name">
+                                    <label for="lname"><i class="far fa-address-card mr-2"></i>Last Name</label>
+                                    <input type="text" id="lname" placeholder="Please, enter your last name..." required name="lastname">
+                                </div>
+                                <div class="payment-form-info-phone-number">
+                                    <label for="phonenum"><i class="fas fa-mobile mr-2"></i>Phone number</label>
+                                    <input type="text" id="phonenum" placeholder="Please, enter your phone number..." required name="phonenum">
+                                </div>
+                                <div class="payment-form-info-city">
+                                    <label for="city"><i class="fas fa-city mr-2"></i>Town / City</label>
+                                    <input type="text" id="city" placeholder="Please, enter your town / city..." required name="city">
+                                </div>
+                                <div class="payment-form-info-address">
+                                    <label for="address"><i class="fas fa-map-marked mr-2"></i>Address</label>
+                                    <input type="text" id="address" placeholder="Please, enter your address..." required name="address">
+                                </div>
+                                <div class="payment-form-info-card-name">
+                                    <label for="card-name"><i class="fas fa-signature mr-2"></i>Card Holder Name</label>
+                                    <input type="text" id="card-name" placeholder="Please, enter card holder name..." required>
+                                </div>
+                                <div class="payment-form-info-card-number">
+                                    <label for="card-number"><i class="fas fa-credit-card mr-2"></i>Credit Card Number</label>
+                                    <input type="text" id="card-number" placeholder="Please, enter card number..." required>
+                                </div>
+                                <div class="payment-form-info-card-expiry-month">
+                                    <label for="card-expiry-month"><i class="fas fa-calendar-alt mr-2"></i>Expiration Month</label>
+                                    <input type="text" id="card-expiry-month" placeholder="Please, enter card expiry month..." required>
+                                </div>
+                                <div class="payment-form-info-card-expiry-year">
+                                    <label for="card-expiry-year"><i class="fas fa-calendar mr-2"></i>Expiration Year</label>
+                                    <input type="text" id="card-expiry-year" placeholder="Please, enter card expiry year..." required>
+                                </div>
+                                <div class="payment-form-info-card-cvc">
+                                    <label for="card-cvc"><i class="far fa-credit-card mr-2"></i>Card CVC</label>
+                                    <input type="text" id="card-cvc" placeholder="Please, enter card cvc..." required>
+                                </div>
+                                <div class="payment-form-info-total">
+                                    <span>Your Total: ${{total}}</span>
+                                </div>
+                                <button type="submit" class="payment-form-info-btn">Buy now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{{> footer }}
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

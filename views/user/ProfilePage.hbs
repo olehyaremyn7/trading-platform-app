@@ -1,184 +1,444 @@
-{{> header }}
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<div class="container ">
-    <div class="alert alert-danger {{#if noError}}d-none{{/if}}">
-        {{errMsg}}
-    </div>
-</div>
-
-<div class="row justify-content-center">
-    <div class="col-sm-6 mb-3">
-        <div id="success" role="alert" class="alert alert-success {{#if noMessages}}d-none{{/if}}">
-            {{ successMsg }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/101392fe56.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <nav class="nav-wrapper">
+        <div class="top-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="email-info">
+                            <i class="fas fa-envelope"></i> oleg.benderg@gramil.com
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="phone-info">
+                            <p><i class="fas fa-phone-alt"></i> +380 68 66 43 426 <a class="social" href="#"><i class="fab fa-facebook social-other"></i></a> <a class="social-other" href="#"><i class="fab fa-twitter"></i></a> <a class="social-other" href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-instagram"></i></a> </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="user-authorization">
+                            {{# if login }}
+                                <a class="user-signup" href="/store/user/profile"><i class="fas fa-user-circle mr-2"></i>Profile</a>
+                                <a class="user-signin" href="/store/user/logout"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+                            {{ else }}
+                                <a class="user-signup" href="/store/authorization/signup"><i class="far fa-user mr-2"></i>Registration</a>
+                                <a class="user-signin" href="/store/authorization/signin"><i class="fas fa-user mr-2"></i>Login</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row mt-4 justify-content-center">
-
-        <div class="col-md-6 mb-4 text-center text-md-left">
-            <h1 class="display-4 font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">User Profile </h1>
-            <hr style="border-top: 2px solid;" class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
-
-            <div class="card">
-                <div class="card-body">
-                    <h1 style="font-size: 100px;" class="dark-grey-text text-center"><strong>
-                        <i class="fas fa-user-circle prefix grey-text"></i>
-                    </strong></h1>
-
-                    <hr class="hr-dark">
-                    {{# each user }}
-                        {{# each this }}
-                            <h3 class="dark-grey-text text-center"><strong>{{ this.firstName }}{{ this.lastName }}</strong></h3>
-                        {{/each}}
-                    {{/each}}
-                    <div class="modal fade" id="modalCreateNewProductForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <form action="/store/user/add-user-product" method="post">
-                                <div class="modal-content">
-                                    <div class="modal-header text-center">
-                                        <h4 class="modal-title w-100 font-weight-bold">New User Product</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body mx-3">
-                                        <div class="md-form mb-5">
-                                            <i class="fas fa-file-signature prefix grey-text"></i>
-                                            <input type="text" id="title" name="title" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form34">Title</label>
-                                        </div>
-
-                                        <div class="md-form mb-5">
-                                            <i class="fas fa-list-alt prefix grey-text"></i>
-                                            <input type="text" id="category" name="category" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form34">Categories</label>
-                                        </div>
-
-                                        <div class="md-form mb-5">
-                                            <i class="fas fa-dollar-sign prefix grey-text"></i>
-                                            <input type="text" id="price" name="price" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form32">Price</label>
-                                        </div>
-
-                                        <div class="md-form mb-5">
-                                            <input type="text" name="imagePath" id="imagePath" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form32">Image path</label>
-                                        </div>
-
-                                        <div class="md-form">
-                                            <i class="fas fa-pencil prefix grey-text"></i>
-                                            <textarea type="text" id="form8" name="description" class="md-textarea form-control" rows="4"></textarea>
-                                            <label data-error="wrong" data-success="right" for="form8">Your description</label>
-                                        </div>
-                                        <!--
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                       aria-describedby="inputGroupFileAddon01">
-                                                <label class="custom-file-label" for="inputGroupFile01">Choose photo</label>
-                                            </div>
-                                        </div> -->
-
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-unique">Post your product <i class="fas fa-paper-plane-o ml-1"></i></button>
-                                    </div>
-                                </div>
+        <hr>
+        <div class="middle-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="logo">
+                            Aligator Store
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <form action="/store/search" method="get">
+                                <input type="text" name="search" placeholder="Search products...">
+                                <input type="submit" value="Search">
                             </form>
                         </div>
                     </div>
-
-                    <div class="text-center">
-                        <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#modalCreateNewProductForm">Add your product
-                            <a href="#"></a>
-                        </button>
-                        <button type="button" class="btn btn-indigo btn-rounded">
-                            <a href="/store/user/edit">Edit profile</a>
-                        </button>
+                    <div class="col-md-1">
+                        <div class="wish">
+                            <a href="#"><i class="far fa-heart"></i></a>
+                            <span class="badge badge-dark"></span>
+                        </div>
                     </div>
-
-                    <ul class="list-group list-group-flush mt-2">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">Active goods: <span class="badge badge-primary badge-pill">2</span></li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">Added goods: <span class="badge badge-primary badge-pill">12</span></li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">Sold goods: <span class="badge badge-primary badge-pill">10</span></li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">Purchased goods: <span class="badge badge-primary badge-pill">5</span></li>
-                    </ul>
+                    <div class="col-md-1">
+                        <div class="cart">
+                            <a href="/store/shopping-cart"><i class="fas fa-shopping-cart"></i></a>
+                            <span class="badge badge-dark mr-1">{{session.cart.totalQty}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
+        </div>
+        <div class="bottom-nav">
+            <div class="container">
+                <div class="navigation">
+                    <a href="/store/home" class="navigation__link">Home</a>
+                    <a href="/store/products" class="navigation__link">Products</a>
+                    <a href="/store/checkout" class="navigation__link">Checkout</a>
+                    <a href="/store/about-us" class="navigation__link">About us</a>
+                    <a href="/store/contact" class="navigation__link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
 
-        <div class="col-md-6 col-xl-5 mb-4">
-            <h1 class="display-4 font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">My Orders </h1>
-            <hr style="border-top: 2px solid;" class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
-            {{# each orders }}
-                <div class="mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title"><a class="md-left"><strong>You ordered:</strong></a></h4>
-                            <hr>
+<main>
 
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <ul class="list-group">
-                                        {{# each this.items }}
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                {{ this.item.title }} | {{ this.quantity }} Units
-                                                <span class="badge badge-primary badge-pill">{{ this.price }}</span>
-                                            </li>
-                                        {{/each}}
-                                    </ul>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Profile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-wrapper">
+        <div class="container">
+            <div class="alert alert-danger {{#if noError}}d-none{{/if}}" role="alert">
+                {{errMsg}}
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-wrapper">
+        <div class="container">
+            <div class="alert alert-success {{#if noMessages}}d-none{{/if}}" role="alert">
+                {{ successMsg }}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCreateNewProductForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="/store/user/add-user-product" method="post">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">New User Product</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-5">
+                            <i class="fas fa-file-signature prefix grey-text"></i>
+                            <input type="text" id="title" name="title" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="form34">Title</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-list-alt prefix grey-text"></i>
+                            <input type="text" id="category" name="category" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="form34">Categories</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-dollar-sign prefix grey-text"></i>
+                            <input type="text" id="price" name="price" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="form32">Price</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-file-image prefix grey-text"></i>
+                            <input type="text" name="imagePath" id="imagePath" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="form32">Image path</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <textarea type="text" id="form8" name="description" class="md-textarea form-control" rows="4"></textarea>
+                            <label data-error="wrong" data-success="right" for="form8">Your description</label>
+                        </div>
+                        <!--
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                       aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose photo</label>
+                            </div>
+                        </div> -->
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-dark">Post your product <i class="fas fa-paper-plane-o ml-1"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalUpdateProductForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                    {{#each userProducts}} <form action="/store/user/update-user-product/{{this._id}}" method="post">{{/each}}
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Edit Product</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                                <i class="fas fa-file-signature prefix grey-text"></i>
+                                <input type="text" id="title" name="title" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="form34">Title</label>
+                            </div>
+
+                            <div class="md-form mb-5">
+                                <i class="fas fa-list-alt prefix grey-text"></i>
+                                <input type="text" id="category" name="category" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="form34">Categories</label>
+                            </div>
+
+                            <div class="md-form mb-5">
+                                <i class="fas fa-dollar-sign prefix grey-text"></i>
+                                <input type="text" id="price" name="price" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="form32">Price</label>
+                            </div>
+
+                            <div class="md-form mb-5">
+                                <i class="fas fa-file-image prefix grey-text"></i>
+                                <input type="text" name="imagePath" id="imagePath" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="form32">Image path</label>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fas fa-pencil prefix grey-text"></i>
+                                <textarea type="text" id="form8" name="description" class="md-textarea form-control" rows="4"></textarea>
+                                <label data-error="wrong" data-success="right" for="form8">Your description</label>
+                            </div>
+                            <!--
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
-                                <hr>
-                                <div class="panel-footer">
-                                    <strong>Total Price: ${{ this.cart.totalPrice }}</strong>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                           aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose photo</label>
+                                </div>
+                            </div> -->
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-dark">Update product <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+    <section class="user-profile-wrapper">
+        <div class="user-profile-container container">
+            <div class="user-profile-header">
+                <div class="user-profile-info">
+                    <div class="user-profile-info-row row">
+                        <div class="col-lg-6">
+                            <div class="user-profile-info-user-field">
+                                {{# each user }}
+                                    <h4><i class="fas fa-user-circle mr-2"></i>{{ firstName }} {{ lastName }}</h4>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="col-lg-5 offset-lg-1">
+                            <div class="user-profile-info-btn">
+                                <div class="user-profile-info-btn-add">
+                                    <a class="user-profile-info-add-product-btn" type="button" href="#" data-toggle="modal" data-target="#modalCreateNewProductForm">Add your product</a>
+                                </div>
+                                <div class="user-profile-info-btn-edit">
+                                    <a class="user-profile-info-edit-page-btn" type="button" href="/store/user/edit">Edit information</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-            {{/each}}
+            <hr>
+
+            <div class="user-profile-user-items">
+                <div class="user-profile-user-products">
+                    <div class="user-profile-user-products-title">
+                        <h3>Your products</h3>
+                        <hr>
+                    </div>
+                    {{#if userProducts.length }}
+                    <div class="user-profile-user-products-table">
+                        <table class="user-products-table">
+                            <thead class="user-products-thead">
+                            <tr class="user-products-tr-thead">
+                                <th class="th-user-products-title">Title</th>
+                                <th class="th-user-products-category">Category</th>
+                                <th class="th-user-products-price">Price</th>
+                                <th class="th-user-products-description">Description</th>
+                                <th class="th-user-products-edit">Edit</th>
+                                <th class="th-user-products-delete">Delete</th>
+                            </tr>
+                            </thead>
+                                {{#each userProducts}}
+                                    <tbody class="user-products-tbody">
+                                    <tr class="user-products-tr-tbody">
+                                        <td class="td-user-products-title">{{ title }}</td>
+                                        <td class="td-user-products-category">{{ category }}</td>
+                                        <td class="td-user-products-price">{{ price }}</td>
+                                        <td class="td-user-products-description">{{ description }}</td>
+                                        <td class="td-user-products-update"><a href="#" data-toggle="modal" data-target="#modalUpdateProductForm"><i class="fas fa-edit update-icon"></i></a></td>
+                                        <td class="td-user-products-delete"><a href="/store/user/remove-user-product/{{this._id}}"><i class="fas fa-trash-alt delete-icon"></i></a></td>
+                                    </tr>
+                                    </tbody>
+                                {{/each}}
+                        </table>
+                    </div>
+                    {{ else }}
+                        <p class="user-profile-user-products-not">You not have added products.</p>
+                    {{/if}}
+                </div>
+
+                <div class="user-profile-user-orders">
+                    <div class="user-profile-user-orders-title">
+                        <h3>Your orders</h3>
+                        <hr>
+                    </div>
+                    {{#if orders.length }}
+                        {{# each orders }}
+                        <div class="user-profile-user-orders-table">
+                            <table class="user-orders-table">
+                                <thead class="user-orders-thead">
+                                <tr class="user-orders-tr-thead">
+                                    <th class="th-user-orders-title">Product</th>
+                                    <th class="th-user-orders-units">Units</th>
+                                    <th class="th-user-orders-price">Price</th>
+                                </tr>
+                                </thead>
+
+                                {{# each this.items }}
+                                    <tbody class="user-orders-tbody">
+                                    <tr class="user-orders-tr-tbody">
+                                        <td class="td-user-orders-title">{{ this.item.title }}</td>
+                                        <td class="td-user-orders-category">{{ this.quantity }}</td>
+                                        <td class="td-user-orders-price">{{ this.price }}</td>
+                                    </tr>
+                                    </tbody>
+                                {{/each}}
+                            </table>
+                        </div>
+                        <div class="user-profile-user-orders-total">
+                            <div class="user-orders-total-row row">
+                                <div class="col-lg-6">
+                                    <div class="user-orders-total">
+                                        <h5>Total price: {{ this.cart.totalPrice }}$</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    {{ else }}
+                        <p class="user-profile-user-orders-not">You not have added products.</p>
+                    {{/if}}
+                </div>
+            </div>
         </div>
+    </section>
 
-        {{# each userProducts}}
-                {{# each this}}
-                        {{ this.imagePath }}
-                        {{ this.title }}
-                        {{ this.category }}
-                        {{ this.description }}
-                        {{ this.price }}
-                    <a href="/store/user/remove-user-product/{{this._id}}" type="button">Delete</a>
+</main>
 
-                            <form action="/store/user/update-user-product/{{this._id}}" method="post">
-                                        <h4 class="modal-title w-100 font-weight-bold">New User Product</h4>
-                                            <input type="text" id="title" name="title" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form34">Title</label>
-
-                                            <input type="text" id="category" name="category" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form34">Categories</label>
-
-                                            <input type="text" id="price" name="price" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form32">Price</label>
-
-                                            <input type="text" name="imagePath" id="imagePath" class="form-control validate">
-                                            <label data-error="wrong" data-success="right" for="form32">Image path</label>
-
-                                            <textarea type="text" id="form8" name="description" class="md-textarea form-control" rows="4"></textarea>
-                                            <label data-error="wrong" data-success="right" for="form8">Your description</label>
-
-                                        <button type="submit" class="btn btn-unique">Edit your product <i class="fas fa-paper-plane-o ml-1"></i></button>
-                            </form>
-                {{/each}}
-        {{/each}}
-
+<footer class="footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        Aligator Store
+                    </div>
+                    <ul>
+                        <li>Address: Ivano-Frankivsk</li>
+                        <li>Phone: +380 68 66 43 426</li>
+                        <li>Email: oleg.benderg@gmail.com</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1">
+                <div class="footer-widget">
+                    <h5>Information</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="footer-widget">
+                    <h5>User Account</h5>
+                    <ul>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Shopping Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="newslatter-item">
+                    <h5>Join Our Newsletter Now</h5>
+                    <p>Get E-mail updates about our latest shop and special offers.</p>
+                    <form action="#" class="subscribe-form">
+                        <input type="text" placeholder="Enter your email here...">
+                        <button type="button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="copyright-reserved">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | aligator-store.com
+                    </div>
+                    <div class="payment-pic">
+                        <img src="/images/payment-method.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/js/mdb.min.js"></script>
+
+</body>
+</html>

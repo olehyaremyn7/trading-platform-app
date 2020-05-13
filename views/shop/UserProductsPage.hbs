@@ -1,70 +1,135 @@
-{{> header }}
+{{> header}}
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<h1>User Products Page</h1>
+
 <main>
-    <div class="container">
-        <div class="container">
-            <section class="text-center mb-4">
-
-                {{# each userProducts}}
-                    <div class="row wow fadeIn">
-                        {{# each this}}
-                            <div class="col-lg-3 col-md-6 mb-4">
-                                <div class="card" style="height: 40rem;">
-
-                                    <div class="view overlay">
-                                        <img class="card-img-top" src="{{ this.imagePath }}" alt="sp">
-                                        <a href="shop/product">
-                                            <div class="mask rgba-white-slight"></div>
-                                        </a>
-                                    </div>
-
-                                    <div class="card-body text-center">
-                                        <a class="grey-text" href="shop/product">
-                                            <h5>{{ this.title }}</h5>
-                                        </a>
-                                        <a href="" class="grey-text">
-                                            <h6>{{ this.category }}</h6>
-                                        </a>
-                                        <h5>
-                                            <strong>
-                                                <a href="#" class="dark-grey-text">{{ this.description }}
-                                                    <span class="badge badge-pill danger-color">NEW</span>
-                                                </a>
-                                            </strong>
-                                        </h5>
-                                        <h4 class="font-weight-bold blue-text">
-                                            <strong>${{ this.price }}</strong>
-                                        </h4>
-                                        <a href="/store/add-to-cart/{{this._id}}" role="button" class="btn btn-lg btn-block btn-outline-success btn-rounded ml-auto waves-effect ">Buy</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <button class="btn-top unique-color-dark" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-                        {{/each}}
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Users Products</span>
+                        <span class="breadcrumb-user-products"><i style="color: black" class="fas fa-arrow-right mr-3"></i><a href="/store/products">Products</a></span>
                     </div>
-                {{/each}}
-            </section>
+                </div>
+            </div>
         </div>
     </div>
+
+    <section class="products-page-wrapper">
+        <div class="products-page-container container">
+            <div class="products-page-row row">
+                <div class="col-lg-3">
+                    <div class="products-page-sidebar sidebar-widgets">
+                        <div class="sidebar-widget-category sidebar-widget">
+                            <div class="widget-category-title sidebar-widget-title">
+                                <h4>Category</h4>
+                            </div>
+                            <div class="widget-category-select">
+                                <form action="#">
+                                    <select name="category" id="category">
+                                        <option class="widget-category-select-option">Choose category</option>
+                                        <option class="widget-category-select-option" value="#">Category 1</option>
+                                        <option class="widget-category-select-option" value="#">Category 2</option>
+                                        <option class="widget-category-select-option" value="#">Category 3</option>
+                                    </select>
+                                    <button type="submit">Show</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget-sort sidebar-widget">
+                            <div class="widget-sort-title sidebar-widget-title">
+                                <h4>Sort by</h4>
+                            </div>
+                            <div class="widget-sort-checkbox">
+                                <form action="#">
+                                    <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-1">
+                                    <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-1">First type of sort </label>
+
+                                    <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-2">
+                                    <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-2">Second type of sort </label>
+
+                                    <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-3">
+                                    <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-3">Third type of sort </label>
+
+                                    <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-4">
+                                    <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-4">Fourth type of sort </label>
+
+                                    <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-5">
+                                    <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-5">Fifth type of sort </label>
+                                    <button type="submit">Sort</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget-state sidebar-widget">
+                            <div class="widget-state-title sidebar-widget-title">
+                                <h4>State</h4>
+                            </div>
+                            <div class="widget-state-checkbox">
+                                <form action="#">
+                                    <input class="widget-state-checkbox-input" type="checkbox" id="widget-state-checkbox-1">
+                                    <label class="widget-state-checkbox-label" for="widget-state-checkbox-1">Used</label>
+
+                                    <input class="widget-state-checkbox-input" type="checkbox" id="widget-state-checkbox-2">
+                                    <label class="widget-state-checkbox-label" for="widget-state-checkbox-2">New</label>
+                                    <button type="submit">Show</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget-price sidebar-widget">
+                            <div class="widget-price-title sidebar-widget-title">
+                                <h4>Pricee</h4>
+                            </div>
+                            <div class="widget-price-input">
+                                <form action="#">
+                                    <label class="widget-price-input-label">From</label>
+                                    <input class="widget-price-input-input" type="number" id="price-input-from">
+                                    <label class="widget-price-input-label">New</label>
+                                    <input class="widget-price-input-input" type="number" id="price-input-to">
+                                    <button type="submit">Filter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="products-page-items">
+                        <div class="products-list">
+                            <div class="products-cards">
+                                {{#each userProducts}}
+                                    <div class="product-card">
+                                        <div class="card-img">
+                                            <img src="{{ imagePath }}" alt="#">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <a href="#">{{ title }}</a>
+                                            </div>
+                                            <div class="card-price">
+                                                <p class="product-card-price">{{ price }}$</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="card-button">
+                                                <button><a href="/store/add-to-cart/{{ this._id }}">Add to Cart</a></button>
+                                            </div>
+                                            <div class="card-icons">
+                                                <span><a href="#"><i style="color: black" class="far fa-heart"></i></a></span>
+                                                <span><i class="fas fa-user"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </main>
 
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    var $btnTop = $(".btn-top")
-    $(window).on("scroll", function(){
-        if($(window).scrollTop() >= 10) {
-            $btnTop.fadeIn();
-        }
-        else {
-            $btnTop.fadeOut();
-        }
-    });
-
-    $btnTop.on("click", function(){
-        $("html,body").animate({scrollTop:0}, 900)
-    });
-</script>
+{{> footer}}

@@ -19,7 +19,7 @@ router.use('/store/authorization', notLoggedIn, async (req, res, next) => {
 router.get('/signup', async (req, res) => {
     try {
         const messages = req.flash('error');
-        await res.render('user/RegistrationPage', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
+        await res.render('user/RegistrationPage', { title: 'Aligator Store | Registration', csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
     } catch (e) {
         console.log({ message: e });
     }
@@ -43,7 +43,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 router.get('/signin', async (req, res) => {
     try {
         const messages = req.flash('error');
-        await res.render('user/LoginPage', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
+        await res.render('user/LoginPage', { title: 'Aligator Store | Login', csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
     } catch (e) {
         console.log({ message: e });
     }

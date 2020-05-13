@@ -2,77 +2,83 @@
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-{{# if products }}
-    <div class="container">
-        <div class="row mt-4">
-
-            <div class="col-md-6 mb-4 text-center text-md-left">
-                <h1 class="display-4 font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Shopping Cart </h1>
-                <hr style="border-top: 2px solid; width: 1107px;" class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
-            </div>
-
-        </div>
-
-        <div class="mt-3 justify-content-center">
-            <div class="card">
-                <div class="card-body">
-
-                    <h4 class="card-title"><a class="md-left"><strong>Your items:</strong></a></h4>
-                    <hr>
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-
-                            {{# each products }}
-                                <li class="list-group-item d-flex justify-content-between align-items-center mt-3">
-                                    <strong>{{ this.item.title }}</strong>
-
-                                    <div class="btn-group">
-                                        <button style="font-size: 10px;" class="btn btn-indigo dropdown-toggle mr-4" type="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false"><b style="font-size: 12px;">Action</b><span class="caret"></span>
-                                        </button>
-
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/store/reduce/{{ this.item._id }}">Reduce by 1</a>
-                                            <a class="dropdown-item" href="/store/remove/{{ this.item._id }}">Remove All</a>
-                                        </div>
-                                    </div>
-
-                                    <span style="font-size: 15px;" class="badge badge-success badge-pill success z-depth-1 ml-1 mr-1"><strong>${{ this.price }}</strong></span>
-                                    <span style="font-size: 15px;" class="badge badge-indigo badge-pill indigo z-depth-1 ml-1 mr-1">{{ this.quantity }}</span>
-                                </li>
-                            {{/each}}
-                        </div>
-                        <hr>
-
-                        <div class="panel-footer">
-                            <div class="md-left">
-                                <span style="font-size: 20px;" class="badge badge-light badge-pill light z-depth-1 ml-1 mr-1 mt-2 mb-3">Total: ${{ totalPrice }} </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-2">
-                        <div class="col-md-6 mb-4 text-center text-md-left ">
-                            <a href="/store/checkout" class="btn btn-success">Checkout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-{{ else }}
-        <div class="mask rgba-light d-flex align-items-center mt-5">
-            <div class="container">
-                <div class="row justify-content-center">
-
-                    <div class="col-md-12 mb-4 text-center">
-                        <h1 style="font-size: 90px;" class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>No Items in Cart <i class="fas fa-shopping-cart"></i></strong></h1>
-                        <hr style="border-top: 3px solid; width: 880px;" class="hr-dark" data-wow-delay="0.4s">
-                        <h1 style="font-size: 25px;" class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Go to the <a style="color: black;" href="/"><u>homepage</u></a> and select the product which you want!</strong></h1>
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Cart</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-{{/if}}
+
+    {{# if products }}
+        <section class="shopping-cart-wrapper">
+            <div class="shopping-cart-container container">
+                <div class="shopping-cart-row">
+                    <div class="shopping-cart-table">
+                        <table class="cart-table">
+                            <thead class="cart-thead">
+                            <tr class="cart-tr-thead">
+                                <th class="th-product-name">Product</th>
+                                <th class="th-product-quantity">Quantity</th>
+                                <th class="th-product-price">Price</th>
+                            </tr>
+                            </thead>
+                            {{# each products }}
+                                <tbody class="cart-tbody">
+                                <tr class="cart-tr-tbody">
+                                    <td class="td-product-name">{{ this.item.title }}</td>
+                                    <td class="td-product-quantity">{{ this.quantity }}</td>
+                                    <td class="td-product-price">{{ this.price }}</td>
+                                    <td class="td-product-reduce"><a href="/store/reduce/{{ this.item._id }}"><i class="fas fa-minus reduce-icon"></i></a></td>
+                                    <td class="td-product-reduce"><a href="/store/remove/{{ this.item._id }}"><i class="fas fa-times remove-icon"></i></a></td>
+                                </tr>
+                                </tbody>
+                            {{/each}}
+                        </table>
+                    </div>
+                    <div class="cart-btn">
+                        <div class="cart-btn-row row">
+                            <div class="col-lg-6">
+                                <div class="cart-btn-total">
+                                    <h3>Total: {{ totalPrice }}$</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1">
+                                <div class="cart-btn-row-bottom">
+                                    <div class="cart-btn-checkout">
+                                        <a class="cart-btn-checkout-btn" type="button" href="/store/checkout">Checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {{ else }}
+
+        <section class="shopping-cart-empty-wrapper">
+            <div class="shopping-cart-empty-container container">
+                <div class="shopping-cart-empty-top-text">
+                    <h2>No items in cart <i class="fas fa-shopping-cart"></i></h2>
+                </div>
+                <hr class="shopping-cart-empty-hr">
+                <div class="shopping-cart-empty-bottom-text">
+                    <h3>Go to the <a href="#">Products</a> page and select the item which you want</h3>
+                </div>
+            </div>
+        </section>
+
+    {{/if}}
+
+</main>
+
+{{> footer}}

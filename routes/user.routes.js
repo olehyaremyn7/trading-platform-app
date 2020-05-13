@@ -13,8 +13,8 @@ router.get('/profile', isLoggedIn, async (req, res) => {
         const successMsg = req.flash('success')[0];
         const errMsg = req.flash('error')[0];
 
-        const user = await User.find({ _id: req.user });
-        const userProducts = await UserProduct.find({ user: req.user });
+        const user = await User.find({ _id: req.user }).lean();
+        const userProducts = await UserProduct.find({ user: req.user }).lean();
 
         await Order.find({ user: req.user }, (err, orders) => {
             if (err) {
@@ -26,7 +26,7 @@ router.get('/profile', isLoggedIn, async (req, res) => {
                 order.items = viewCart.generateArray();
             });
 
-            res.render('user/ProfilePage', { orders: orders, userProducts: userProducts, user: user, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
+            res.render('user/ProfilePage', { title: 'Aligator Store | Profile', orders: orders, userProducts, user, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
         });
 
     } catch (e) {
@@ -37,8 +37,8 @@ router.get('/profile', isLoggedIn, async (req, res) => {
 // get edit page // /store/user/edit
 router.get('/edit', isLoggedIn, async (req, res) => {
     try {
-        const user = await User.find({ _id: req.user });
-        res.render('user/EditPage', { title: 'Edit Page', user: user });
+        const user = await User.find({ _id: req.user }).lean();
+        res.render('user/EditPage', { title: 'Aligator Store | Edit', user });
     } catch (e) {
         console.log({ message: e });
     }

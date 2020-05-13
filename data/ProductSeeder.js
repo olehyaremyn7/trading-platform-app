@@ -26,11 +26,11 @@ connect();
 
 // product object // insert new product data here
 const product = {
-    imagePath: 'https://i2.rozetka.ua/goods/12996210/105097122_images_12996210072.jpg',
-    title: 'CHRISTIAN DIOR DIOR HOMME SPORT',
-    category: 'Accessories',
-    description: 'For strong, athletic men. Refers to the "aromatic, citrus" family.',
-    price: 70
+    imagePath: 'https://i2.rozetka.ua/goods/14935338/nike_884776231314_images_14935338097.jpg',
+    title: 'Nike M2K Tekno',
+    category: 'Sporting goods',
+    description: 'Stylish and reliable sneakers for all seasons.',
+    price: 75
 };
 
 console.log('New data is uploaded to the database...');
