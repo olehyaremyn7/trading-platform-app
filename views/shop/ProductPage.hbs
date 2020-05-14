@@ -17,6 +17,21 @@
         </div>
     </div>
 
+    <div class="alert-wrapper">
+        <div class="container">
+            <div class="alert alert-danger {{#if noError}}d-none{{/if}}" role="alert">
+                {{errMsg}}
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-wrapper">
+        <div class="container">
+            <div class="alert alert-success {{#if noMessages}}d-none{{/if}}" role="alert">
+                {{ successMsg }}
+            </div>
+        </div>
+    </div>
     <section class="product-page-wrapper">
         <div class="product-page-container container">
             <div class="product-page-row row">
@@ -34,14 +49,16 @@
                                 <p>Exchange / return of goods within 14 days</p>
                             </div>
                         </div>
+                {{/each}}
                         <div class="col-lg-6">
                             <div class="product-page-right-container">
                                 <div class="product-page-right-title">
                                     <h2>{{ title }}</h2>
                                 </div>
                                 <div class="product-page-right-available">
-                                    <span>in stock</span> <i class="fas fa-store-alt"></i> <span class="rating-span">5</span>
-                                    <form action="/store/product-rating" method="post">
+                                    <span>in stock</span> <i class="fas fa-store-alt"></i> <span class="rating-span">{{ avarage }}</span>
+                        {{#each singleProduct}}
+                                    <form action="/store/product-rating/{{ this._id }}" method="post">
                                         <select name="rating_select" id="rating_select">
                                             <option class="select-product-rating-option">Select the product rating</option>
                                             <option class="select-product-rating-option" value="1">1</option>
@@ -50,6 +67,7 @@
                                             <option class="select-product-rating-option" value="4">4</option>
                                             <option class="select-product-rating-option" value="5">5</option>
                                         </select>
+                                        <button type="submit">Rate</button>
                                     </form>
                                 </div>
                                 <div class="product-page-right-price">
@@ -70,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                {{/each}}
+                        {{/each}}
             </div>
         </div>
     </section>

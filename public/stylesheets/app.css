@@ -2855,6 +2855,19 @@ PRODUCT PAGE
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.product-page-right-available button {
+    margin-top: 20px;
+    font-size: 15px;
+    background: black;
+    color: #ffffff;
+    padding: 10px 15px 10px 15px;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
 .product-page-right-available #rating_select {
     display: block;
     height: 50px;

@@ -42,8 +42,44 @@ router.get('/users-products', async (req, res) => {
 // get product page // /store/product/id
 router.get('/product/:id', async (req, res) => {
     try {
+        const successMsg = req.flash('success')[0];
+        const errMsg = req.flash('error')[0];
+
+        const avarageRating = await Product.find({ _id: req.params.id }).lean();
+        const getAvarager = () => {
+            for (let keys in avarageRating) {
+                let rating = avarageRating[keys]
+                return rating.rating
+            }
+        }
+        const avarage = _(getAvarager()).mean(function (r) {
+            return r
+        })
+
         const singleProduct = await Product.find({ _id: req.params.id }).lean();
-        res.render('shop/ProductPage', { title: 'Aligator Store | Product', singleProduct });
+        res.render('shop/ProductPage', { title: 'Aligator Store | Product', avarage ,singleProduct, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.post('/product-rating/:id', async (req, res) => {
+    try {
+        const productID = req.params.id;
+        const query = req.body.rating_select;
+        const productRating = {
+            $push: {
+                "rating": query
+            }
+        };
+
+        await Product.findByIdAndUpdate(productID, productRating,(err) => {
+            if (err) {
+                return req.flash('error', 'Сталася помилка при оцінюванні, спробуйте ще раз');
+            }
+            req.flash('success', 'Товар оцінено');
+            res.redirect(req.get('referer'));
+        });
     } catch (e) {
         console.log({ message: e });
     }

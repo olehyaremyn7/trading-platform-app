@@ -26,11 +26,13 @@ connect();
 
 // product object // insert new product data here
 const product = {
-    imagePath: 'https://i2.rozetka.ua/goods/14935338/nike_884776231314_images_14935338097.jpg',
-    title: 'Nike M2K Tekno',
-    category: 'Sporting goods',
-    description: 'Stylish and reliable sneakers for all seasons.',
-    price: 75
+    imagePath: 'https://hotline.ua/img/tx/204/2042918805.jpg',
+    title: 'Samsung Galaxy Note 10 Plus',
+    category: 'Mobile phones',
+    description: 'Представляем Galaxy Note10|10+. Мощность ноутбука, игровая консоль, профессиональная камера и умное электронное перо.',
+    price: 500,
+    rating: 0,
+    state: 'New' // new or used
 };
 
 console.log('New data is uploaded to the database...');

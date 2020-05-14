@@ -20,6 +20,14 @@ const schema = new Schema({
     price: {
         type: Number,
         required: true
+    },
+    rating: [{
+        type: Number,
+        required: false
+    }],
+    state: {
+        type: String,
+        required: true
     }
 });
 
