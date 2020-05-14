@@ -113,6 +113,22 @@
         </div>
     </div>
 
+    <div class="alert-wrapper">
+        <div class="container">
+            <div class="alert alert-danger {{#if noError}}d-none{{/if}}" role="alert">
+                {{errMsg}}
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-wrapper">
+        <div class="container">
+            <div class="alert alert-success {{#if noMessages}}d-none{{/if}}" role="alert">
+                {{ successMsg }}
+            </div>
+        </div>
+    </div>
+
     <section class="contact-page-wrapper">
         <div class="contact-page-container container">
             <div class="contact-page-map-container">
@@ -132,14 +148,14 @@
                                 <div class="contact-page-form-text">
                                     <p>Lorem ipsum dolor sit amet.</p>
                                 </div>
-                                <form action="#">
+                                <form action="/store/contact" method="post">
                                     <div class="contact-form-name">
                                         <label for="name"><i class="fas fa-user mr-2"></i>Name</label>
-                                        <input type="text" id="name" placeholder="Please, enter your name...">
+                                        <input type="text" id="name" name="name" placeholder="Please, enter your name...">
                                     </div>
                                     <div class="contact-form-email">
                                         <label for="email"><i class="fas fa-envelope mr-2"></i>Email address</label>
-                                        <input type="text" id="email" placeholder="Please, enter your email...">
+                                        <input type="text" id="email" name="email" placeholder="Please, enter your email...">
                                     </div>
                                     <div class="contact-form-textarea">
                                         <textarea name="message" id="message" placeholder="Your message"></textarea>

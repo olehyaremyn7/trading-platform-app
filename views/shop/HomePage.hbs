@@ -3,8 +3,24 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <main>
+
     <section class="intro-wrapper">
         <div class="intro-img">
+            <div class="home-alert">
+                <div class="container">
+                    <div class="alert alert-danger {{#if noError}}d-none{{/if}}" role="alert">
+                        {{errMsg}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-wrapper">
+                <div class="container">
+                    <div class="alert alert-success {{#if noMessages}}d-none{{/if}}" role="alert">
+                        {{ successMsg }}
+                    </div>
+                </div>
+            </div>
             <div class="intro-container">
                 <div><h2 class="intro-text">Are you looking for a unique product?</h2></div>
                 <div><h2 class="intro-text">Want to sell yours?</h2></div>
@@ -122,8 +138,8 @@
             </div>
 
             <div class="news-email-input">
-                <form>
-                    <input class="sub-top" type="text" placeholder="Enter your email here...">
+                <form action="/store/subscribe" method="post">
+                    <input class="sub-top" type="text" name="email" placeholder="Enter your email here...">
                     <input class="sub-bottom" type="submit" value="Subscribe">
                 </form>
             </div>

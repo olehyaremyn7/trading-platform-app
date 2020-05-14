@@ -5,12 +5,15 @@ const UserProduct = require('../models/UserProduct'); // import User schema
 const Cart = require('../models/Cart'); // import Cart schema
 const User = require('../models/User');
 const _ = require('lodash');
+const Contact = require('../models/Contact');
+const Subscribe = require('../models/Subscribe');
 
 // get home page // /store/home
 router.get('/home', async (req, res) => {
     try {
         const successMsg = req.flash('success')[0];
-        await res.render('shop/HomePage', { title: 'Aligator Store | Home', successMsg: successMsg, noMessages: !successMsg });
+        const errMsg = req.flash('error')[0];
+        await res.render('shop/HomePage', { title: 'Aligator Store | Home', errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
     } catch (e) {
         console.log({ message: e });
     }
@@ -75,9 +78,49 @@ router.get('/about-us', async (req, res) => {
 // get blog page // /store/blog
 router.get('/contact', async (req, res) => {
     try {
-        await res.render('shop/ContactPage', { title: 'Aligator Store | Contact' });
+        const successMsg = req.flash('success')[0];
+        const errMsg = req.flash('error')[0];
+        await res.render('shop/ContactPage', { title: 'Aligator Store | Contact', errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg });
     } catch (e) {
         console.log({ message: e });
+    }
+});
+
+router.post('/contact', async (req, res) => {
+    try {
+        const userMessage = new Contact({
+            name: req.body.name,
+            email: req.body.email,
+            message: req.body.message
+        });
+
+        await userMessage.save((err) => {
+            if (err) {
+                return req.flash('error', 'Сталася помилка при відправленні, спробуйте ще раз');
+            }
+            req.flash('success', 'Дякуємо за ваше повідомлення, ми постараємся дати Вам відповідь у найближчий час');
+            res.redirect('/store/contact');
+        });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.post('/subscribe', async (req, res) => {
+    try {
+        const subNews = new Subscribe({
+            email: req.body.email
+        });
+
+        await subNews.save((err) => {
+            if (err) {
+                return req.flash('error', 'Сталася помилка при відправленні запросу на підписку, спробуйте ще раз');
+            }
+            req.flash('success', 'Дякуємо за вашу підписку');
+            res.redirect('/store/home');
+        });
+    } catch (e) {
+
     }
 });
 

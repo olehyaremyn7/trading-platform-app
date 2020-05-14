@@ -40,7 +40,17 @@
                                     <h2>{{ title }}</h2>
                                 </div>
                                 <div class="product-page-right-available">
-                                    <span>in stock</span> <i class="fas fa-store-alt"></i>
+                                    <span>in stock</span> <i class="fas fa-store-alt"></i> <span class="rating-span">5</span>
+                                    <form action="/store/product-rating" method="post">
+                                        <select name="rating_select" id="rating_select">
+                                            <option class="select-product-rating-option">Select the product rating</option>
+                                            <option class="select-product-rating-option" value="1">1</option>
+                                            <option class="select-product-rating-option" value="2">2</option>
+                                            <option class="select-product-rating-option" value="3">3</option>
+                                            <option class="select-product-rating-option" value="4">4</option>
+                                            <option class="select-product-rating-option" value="5">5</option>
+                                        </select>
+                                    </form>
                                 </div>
                                 <div class="product-page-right-price">
                                     <h3>{{ this.price }}$</h3>

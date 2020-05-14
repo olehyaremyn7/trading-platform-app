@@ -6,6 +6,7 @@ const User = require('../models/User'); // import User schema
 const Order = require('../models/Order'); // import Oder schema
 const Cart = require('../models/Cart'); // import Cart schema
 const UserProduct = require('../models/UserProduct'); // import UserProduct schema
+const Contact = require('../models/Contact');
 
 // get profile page // /store/user/profile
 router.get('/profile', isLoggedIn, async (req, res) => {

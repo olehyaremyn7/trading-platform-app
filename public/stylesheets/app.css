@@ -54,6 +54,11 @@ BREADCRUMB  SECTION
 ALERT  WRAPPER
  ********************************/
 
+.home-alert {
+    text-align: center;
+    font-size: 20px;
+}
+
 .alert-wrapper {
     text-align: center;
     font-size: 20px;
@@ -2839,8 +2844,33 @@ PRODUCT PAGE
     font-size: 20px;
 }
 
-.product-page-right-price h3 {
+.product-page-right-available .rating-span {
+    margin-left: 22px;
+    padding: 10px 20px 10px 20px;
+    background: black;
+    border: 1px solid black;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-page-right-available #rating_select {
+    display: block;
+    height: 50px;
+    width: 55%;
+    padding: 0 5px 0 20px;
+    border: 1px solid #ebebeb;
+    outline: none;
     margin-top: 30px;
+}
+
+.product-page-right-available #rating_select:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-page-right-price h3 {
+    margin-top: 25px;
     font-weight: 800;
     font-size: 40px;
 }
