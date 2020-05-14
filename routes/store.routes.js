@@ -3,6 +3,7 @@ const router = Router();
 const Product = require('../models/Product'); // import Product schema
 const UserProduct = require('../models/UserProduct'); // import User schema
 const Cart = require('../models/Cart'); // import Cart schema
+const _ = require('lodash');
 
 // get home page // /store/home
 router.get('/home', async (req, res) => {
@@ -148,7 +149,69 @@ router.get('/search', async (req, res) => {
                 }
             }).lean();
 
-            res.render('shop/SearchPage', { title: 'Aligator Store | Products', filteredProducts, filteredUserProducts, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg })
+            res.render('shop/SearchPage', { title: 'Aligator Store | Search', filteredProducts, filteredUserProducts, errMsg: errMsg, noError: !errMsg, successMsg: successMsg, noMessages: !successMsg })
+        }
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/category', async (req, res) => {
+    try {
+        const query = req.query.category_select;
+        const productCategory = await Product.find({ category: query }).lean();
+        res.render('shop/CategoryPage', { title: 'Aligator Store | Products', productCategory });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/sort', async (req, res) => {
+    try {
+        const query = req.query.sort;
+
+        if ( query === 'sort_from_cheaper' ) {
+            const sort_by_cheaper = await Product.find({}).lean();
+            const output = _(sort_by_cheaper)
+                .filter(function (o) {
+                    return o.price > 10
+                })
+                .sortBy(function (o) {
+                    return o.price
+                })
+                .value()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
+        }
+
+        if ( query === 'sort_from_expensive' ) {
+            const sort_from_expensive = await Product.find({}).lean();
+            const output = _(sort_from_expensive)
+                .filter(function (o) {
+                    return o.price < 1000
+                })
+                .orderBy(['price'], ['desc'])
+                .values()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
+        }
+
+        if ( query === 'sort_a_z' ) {
+            const sort_from_expensive = await Product.find({}).lean();
+            const output = _(sort_from_expensive)
+                .orderBy(['title'], ['asc'])
+                .values()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
+        }
+
+        if ( query === 'sort_z_a' ) {
+            const sort_from_expensive = await Product.find({}).lean();
+            const output = _(sort_from_expensive)
+                .orderBy(['title'], ['desc'])
+                .values()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
         }
     } catch (e) {
         console.log({ message: e });

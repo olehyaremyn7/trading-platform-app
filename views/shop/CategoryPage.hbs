@@ -28,7 +28,7 @@
                                 <h4>Category</h4>
                             </div>
                             <div class="widget-category-select">
-                                <form action="/store/category">
+                                <form action="#">
                                     <select name="category_select" id="category">
                                         <option class="widget-category-select-option">Choose category</option>
                                         <option class="widget-category-select-option" value="Accessories">Accessories</option>
@@ -98,29 +98,29 @@
                     <div class="products-page-items">
                         <div class="products-list">
                             <div class="products-cards">
-                                {{#each products}}
-                                <div class="product-card">
-                                    <div class="card-img">
-                                        <img src="{{ imagePath }}" alt="#">
+                                {{#each productCategory}}
+                                    <div class="product-card">
+                                        <div class="card-img">
+                                            <img src="{{ imagePath }}" alt="#">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <a href="/store/product/{{ this._id }}">{{ title }}</a>
+                                            </div>
+                                            <div class="card-price">
+                                                <p class="product-card-price">{{ price }}$</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="card-button">
+                                                <button><a href="/store/add-to-cart/{{ this._id }}">Add to Cart</a></button>
+                                            </div>
+                                            <div class="card-icons">
+                                                <span><a href="#"><i style="color: black" class="far fa-heart"></i></a></span>
+                                                <span><i class="fas fa-store-alt"></i></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="card-title">
-                                            <a href="/store/product/{{ this._id }}">{{ title }}</a>
-                                        </div>
-                                        <div class="card-price">
-                                            <p class="product-card-price">{{ price }}$</p>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-button">
-                                            <button><a href="/store/add-to-cart/{{ this._id }}">Add to Cart</a></button>
-                                        </div>
-                                        <div class="card-icons">
-                                            <span><a href="#"><i style="color: black" class="far fa-heart"></i></a></span>
-                                            <span><i class="fas fa-store-alt"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
                                 {{/each}}
                             </div>
                         </div>
