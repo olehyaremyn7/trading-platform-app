@@ -2791,16 +2791,29 @@ PRODUCT PAGE
 
 .product-page-container {
     margin-top: 50px;
-    padding-bottom: 50px;
 }
 
 .product-page-left-container .product-page-left-img img {
+    margin-top: 25px;
     height: 400px;
+}
+
+.product-page-left-user-info {
+    padding-top: 15px;
+}
+
+.product-page-left-user-info h3 {
+    font-weight: 700;
+    background: black;
+    color: white;
+    display: inline;
+    padding: 5px 13px;
+    font-size: 30px;
 }
 
 .product-page-right-container {
     margin-left: 100px;
-    margin-top: 65px;
+    margin-top: 70px;
 }
 
 .product-page-right-title h2 {

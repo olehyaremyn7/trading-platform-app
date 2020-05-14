@@ -3,6 +3,7 @@ const router = Router();
 const Product = require('../models/Product'); // import Product schema
 const UserProduct = require('../models/UserProduct'); // import User schema
 const Cart = require('../models/Cart'); // import Cart schema
+const User = require('../models/User');
 const _ = require('lodash');
 
 // get home page // /store/home
@@ -40,6 +41,23 @@ router.get('/product/:id', async (req, res) => {
     try {
         const singleProduct = await Product.find({ _id: req.params.id }).lean();
         res.render('shop/ProductPage', { title: 'Aligator Store | Product', singleProduct });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/user-product/:id', async (req, res) => {
+    try {
+        const singleUserProduct = await UserProduct.find({ _id: req.params.id }).lean();
+        const getUserId = () => {
+            for (let keys in singleUserProduct) {
+                let user = singleUserProduct[keys]
+                return user.user
+            }
+        }
+        const userID = getUserId();
+        const userProductInfo = await User.find({ _id: userID }).lean();
+        res.render('shop/UserProductPage', { title: 'Aligator Store | User Product', userProductInfo, singleUserProduct });
     } catch (e) {
         console.log({ message: e });
     }
