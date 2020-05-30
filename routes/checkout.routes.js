@@ -2,6 +2,7 @@ const { Router } = require('express'); // express router for work with routes
 const router = Router();
 const Cart = require('../models/Cart'); // import Cart schema
 const Order = require('../models/Order'); // import Oder schema
+const PostOrder = require('../models/PostOrder');
 
 // get checkout page // /store/checkout
 router.get('/', async (req, res) => {
@@ -12,6 +13,36 @@ router.get('/', async (req, res) => {
 
         const cart = await new Cart(req.session.cart);
         res.render('checkout/CheckoutPage', { title: 'Aligator Store | Checkout', total: cart.totalPrice });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.post('/', isLoggedIn, async (req, res) => {
+    try {
+        if (!req.session.cart) {
+            return res.redirect('/store/shopping-cart');
+        }
+
+        const cart = await new Cart(req.session.cart);
+        const postOrder = new PostOrder({
+            user: req.user,
+            cart: cart,
+            post_address: req.body.post_address,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            phone_number: req.body.phone_number,
+            city: req.body.city
+        });
+
+        await postOrder.save((err) => {
+            if (err) {
+                return res.send({ message: err });
+            }
+            req.flash('success', 'Ви оформили замовлення товару');
+            req.session.cart = null;
+            res.redirect('/store/home');
+        });
     } catch (e) {
         console.log({ message: e });
     }

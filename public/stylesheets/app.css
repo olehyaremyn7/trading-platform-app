@@ -11,6 +11,33 @@ body {
     color: white;
 }
 
+#btnScrollToTop {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    right: 20px;
+    width: 60px;
+    bottom: 20px;
+    height: 60px;
+    border-radius: 50%;
+    background: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+#btnScrollToTop:hover {
+    background: white;
+    color: black;
+}
+
+#btnScrollToTop:active {
+    background: white;
+    color: black;
+}
+
 /*********************************
 BREADCRUMB  SECTION
  ********************************/

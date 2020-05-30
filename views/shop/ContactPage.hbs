@@ -212,7 +212,7 @@
             </div>
         </div>
     </section>
-
+    <button id="btnScrollToTop"><i class="fas fa-arrow-up"></i></button>
 </main>
 
 <footer class="footer-section">
@@ -304,5 +304,20 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADhc5iBUKx1HxPGmAVSb_l4DDmE5e7VCc&callback=initMap"
         async defer></script>
+
+<script>
+    let $btnTop = $("#btnScrollToTop");
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() >= 50) {
+            $btnTop.fadeIn();
+        } else {
+            $btnTop.fadeOut();
+        }
+    });
+
+    $btnTop.on("click", function () {
+        $("html, body").animate({scrollTop: 0}, 900)
+    });
+</script>
 </body>
 </html>

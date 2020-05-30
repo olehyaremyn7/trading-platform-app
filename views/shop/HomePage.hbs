@@ -200,23 +200,23 @@
             </div>
         </div>
     </section>
+    <button id="btnScrollToTop"><i class="fas fa-arrow-up"></i></button>
 </main>
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    var $btnTop = $(".btn-top")
-    $(window).on("scroll", function(){
-        if($(window).scrollTop() >= 10) {
+    let $btnTop = $("#btnScrollToTop");
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() >= 50) {
             $btnTop.fadeIn();
-        }
-        else {
+        } else {
             $btnTop.fadeOut();
         }
     });
 
-    $btnTop.on("click", function(){
-        $("html,body").animate({scrollTop:0}, 900)
+    $btnTop.on("click", function () {
+        $("html, body").animate({scrollTop: 0}, 900)
     });
 </script>
 {{> footer}}

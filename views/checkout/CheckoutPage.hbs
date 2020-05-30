@@ -38,26 +38,26 @@
                                     Checkout Details
                                 </h2>
                             </div>
-                            <form action="#">
+                            <form action="/store/checkout" method="post">
                                 <div class="checkout-form-info-first-name">
-                                    <label for="fname"><i class="fas fa-address-card mr-2"></i>First Name</label>
-                                    <input type="text" id="fname" placeholder="Please, enter your first name..." required name="fname">
+                                    <label for="first_name"><i class="fas fa-address-card mr-2"></i>First Name</label>
+                                    <input type="text" name="first_name" id="first_name" placeholder="Please, enter your first name...">
                                 </div>
                                 <div class="checkout-form-info-last-name">
-                                    <label for="lname"><i class="far fa-address-card mr-2"></i>Last Name</label>
-                                    <input type="text" id="lname" placeholder="Please, enter your last name..." required name="lname">
+                                    <label for="last_name"><i class="far fa-address-card mr-2"></i>Last Name</label>
+                                    <input type="text" name="last_name" id="last_name" placeholder="Please, enter your last name...">
                                 </div>
                                 <div class="checkout-form-info-phone-number">
-                                    <label for="phone-n"><i class="fas fa-mobile mr-2"></i>Phone number</label>
-                                    <input type="text" id="phone-n" placeholder="Please, enter your phone number..." required name="phone-n">
+                                    <label for="phone_number"><i class="fas fa-mobile mr-2"></i>Phone number</label>
+                                    <input type="text" name="phone_number" id="phone_number" placeholder="Please, enter your phone number...">
                                 </div>
                                 <div class="checkout-form-info-city">
                                     <label for="city"><i class="fas fa-city mr-2"></i>Town / City</label>
-                                    <input type="text" id="city" placeholder="Please, enter your town / city..." required name="city">
+                                    <input type="text" name="city" id="city" placeholder="Please, enter your town / city...">
                                 </div>
                                 <div class="checkout-form-info-address">
-                                    <label for="address"><i class="fas fa-map-marked mr-2"></i>Post address</label>
-                                    <input type="text" id="address" placeholder="Please, enter your address..." required name="address">
+                                    <label for="post_address"><i class="fas fa-map-marked mr-2"></i>Post address</label>
+                                    <input type="text" name="post_address" id="post_address" placeholder="Please, enter your address...">
                                 </div>
                                 <div class="checkout-form-info-total">
                                     <span>Your Total: {{ total }}</span>
@@ -88,7 +88,22 @@
             </div>
         </div>
     </section>
-
+    <button id="btnScrollToTop"><i class="fas fa-arrow-up"></i></button>
 </main>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    let $btnTop = $("#btnScrollToTop");
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() >= 50) {
+            $btnTop.fadeIn();
+        } else {
+            $btnTop.fadeOut();
+        }
+    });
 
+    $btnTop.on("click", function () {
+        $("html, body").animate({scrollTop: 0}, 900)
+    });
+</script>
 {{> footer }}

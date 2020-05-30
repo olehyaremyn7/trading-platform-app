@@ -54,7 +54,7 @@ router.get('/product/:id', async (req, res) => {
             }
         }
         const avarage = _(getAvarager()).mean(function (r) {
-            return r
+            return r.toFixed(1)
         })
 
         const singleProduct = await Product.find({ _id: req.params.id }).lean();
