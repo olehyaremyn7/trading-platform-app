@@ -102,6 +102,7 @@ router.post('/add-user-product', isLoggedIn, async (req, res) => {
             title: req.body.title,
             category: req.body.category,
             price: req.body.price,
+            state: req.body.state,
             description: req.body.description,
             user: req.user
         });
@@ -143,7 +144,8 @@ router.post('/update-user-product/:id', isLoggedIn, async (req, res) => {
             title: req.body.title,
             category: req.body.category,
             price: req.body.price,
-            description: req.body.description
+            description: req.body.description,
+            state: req.body.state
         };
 
         await UserProduct.findByIdAndUpdate(productId, updatedUserProduct, (err) => {

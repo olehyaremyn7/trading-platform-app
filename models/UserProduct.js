@@ -25,6 +25,10 @@ const schema = new Schema({
     user: {
         type: Schema.Types.ObjectId, ref: 'User'
     },
+    state: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = model('UserProduct', schema); // 'UserProduct' name of MongoDB collection and exports UserProduct schema

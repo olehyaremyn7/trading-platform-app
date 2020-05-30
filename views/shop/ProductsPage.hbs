@@ -28,7 +28,7 @@
                                 <h4>Category</h4>
                             </div>
                             <div class="widget-category-select">
-                                <form action="/store/category">
+                                <form action="/store/products-category">
                                     <select name="category_select" id="category">
                                         <option class="widget-category-select-option">Choose category</option>
                                         <option class="widget-category-select-option" value="Accessories">Accessories</option>
@@ -44,7 +44,7 @@
                                 <h4>Sort by</h4>
                             </div>
                             <div class="widget-sort-checkbox">
-                                <form action="/store/sort">
+                                <form action="/store/products-sort">
                                     <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-1" name="sort" value="sort_from_cheaper">
                                     <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-1">Sort from cheaper products </label>
 
@@ -68,11 +68,11 @@
                                 <h4>State</h4>
                             </div>
                             <div class="widget-state-checkbox">
-                                <form action="#">
-                                    <input class="widget-state-checkbox-input" type="checkbox" id="widget-state-checkbox-1">
+                                <form action="/store/products-state">
+                                    <input class="widget-state-checkbox-input" type="checkbox" id="widget-state-checkbox-1" name="state_product" value="Used">
                                     <label class="widget-state-checkbox-label" for="widget-state-checkbox-1">Used</label>
 
-                                    <input class="widget-state-checkbox-input" type="checkbox" id="widget-state-checkbox-2">
+                                    <input class="widget-state-checkbox-input" type="checkbox" id="widget-state-checkbox-2" name="state_product" value="New">
                                     <label class="widget-state-checkbox-label" for="widget-state-checkbox-2">New</label>
                                     <button type="submit">Show</button>
                                 </form>
@@ -80,14 +80,14 @@
                         </div>
                         <div class="sidebar-widget-price sidebar-widget">
                             <div class="widget-price-title sidebar-widget-title">
-                                <h4>Pricee</h4>
+                                <h4>Price</h4>
                             </div>
                             <div class="widget-price-input">
-                                <form action="#">
+                                <form action="/store/products-price-range">
                                     <label class="widget-price-input-label">From</label>
-                                    <input class="widget-price-input-input" type="number" id="price-input-from">
-                                    <label class="widget-price-input-label">New</label>
-                                    <input class="widget-price-input-input" type="number" id="price-input-to">
+                                    <input class="widget-price-input-input" type="number" id="price_from" name="price_from">
+                                    <label class="widget-price-input-label">To</label>
+                                    <input class="widget-price-input-input" type="number" id="price_to" name="price_to">
                                     <button type="submit">Filter</button>
                                 </form>
                             </div>

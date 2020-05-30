@@ -253,17 +253,17 @@ router.get('/search', async (req, res) => {
     }
 });
 
-router.get('/category', async (req, res) => {
+router.get('/products-category', async (req, res) => {
     try {
         const query = req.query.category_select;
         const productCategory = await Product.find({ category: query }).lean();
-        res.render('shop/CategoryPage', { title: 'Aligator Store | Products', productCategory });
+        res.render('shop/CategoryPage', { title: 'Aligator Store | Results', productCategory });
     } catch (e) {
         console.log({ message: e });
     }
 });
 
-router.get('/sort', async (req, res) => {
+router.get('/products-sort', async (req, res) => {
     try {
         const query = req.query.sort;
 
@@ -278,19 +278,19 @@ router.get('/sort', async (req, res) => {
                 })
                 .value()
 
-            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
         }
 
         if ( query === 'sort_from_expensive' ) {
             const sort_from_expensive = await Product.find({}).lean();
             const output = _(sort_from_expensive)
                 .filter(function (o) {
-                    return o.price < 1000
+                    return o.price < 20000
                 })
                 .orderBy(['price'], ['desc'])
                 .values()
 
-            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
         }
 
         if ( query === 'sort_a_z' ) {
@@ -299,7 +299,7 @@ router.get('/sort', async (req, res) => {
                 .orderBy(['title'], ['asc'])
                 .values()
 
-            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
         }
 
         if ( query === 'sort_z_a' ) {
@@ -308,8 +308,147 @@ router.get('/sort', async (req, res) => {
                 .orderBy(['title'], ['desc'])
                 .values()
 
-            res.render('shop/SortPage', { title: 'Aligator Store | Products', output });
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
         }
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/products-state', async (req, res) => {
+    try {
+        const query = req.query.state_product;
+
+        if ( query === 'New' ) {
+            const productState = await Product.find({ state: query }).lean();
+            res.render('shop/StateSortPage', { title: 'Aligator Store | Results', productState });
+        }
+
+        if ( query === 'Used' ) {
+            const productState = await Product.find({ state: query }).lean();
+            res.render('shop/StateSortPage', { title: 'Aligator Store | Results', productState });
+        }
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/products-price-range', async (req, res) => {
+    try {
+        const price_from = req.query.price_from;
+        const price_to = req.query.price_to;
+        const products = await Product.find({}).lean();
+        const output = _(products)
+            .filter(function (x) {
+                return x.price >= price_from && x.price <= price_to
+            })
+            .sortBy(function (o) {
+                return o.price
+            })
+            .value()
+
+        res.render('shop/PriceSortPage', { title: 'Aligator Store | Results', output });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+// user category, sort, state, price range
+router.get('/user-products-category', async (req, res) => {
+    try {
+        const query = req.query.category_select;
+        const productCategory = await UserProduct.find({ category: query }).lean();
+        res.render('shop/CategoryPage', { title: 'Aligator Store | Results', productCategory });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/user-products-sort', async (req, res) => {
+    try {
+        const query = req.query.sort;
+
+        if ( query === 'sort_from_cheaper' ) {
+            const sort_by_cheaper = await UserProduct.find({}).lean();
+            const output = _(sort_by_cheaper)
+                .filter(function (o) {
+                    return o.price > 10
+                })
+                .sortBy(function (o) {
+                    return o.price
+                })
+                .value()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
+        }
+
+        if ( query === 'sort_from_expensive' ) {
+            const sort_from_expensive = await UserProduct.find({}).lean();
+            const output = _(sort_from_expensive)
+                .filter(function (o) {
+                    return o.price < 20000
+                })
+                .orderBy(['price'], ['desc'])
+                .values()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
+        }
+
+        if ( query === 'sort_a_z' ) {
+            const sort_from_expensive = await UserProduct.find({}).lean();
+            const output = _(sort_from_expensive)
+                .orderBy(['title'], ['asc'])
+                .values()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
+        }
+
+        if ( query === 'sort_z_a' ) {
+            const sort_from_expensive = await UserProduct.find({}).lean();
+            const output = _(sort_from_expensive)
+                .orderBy(['title'], ['desc'])
+                .values()
+
+            res.render('shop/SortPage', { title: 'Aligator Store | Results', output });
+        }
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/user-products-state', async (req, res) => {
+    try {
+        const query = req.query.state_product;
+
+        if ( query === 'New' ) {
+            const productState = await UserProduct.find({ state: query }).lean();
+            res.render('shop/StateSortPage', { title: 'Aligator Store | Results', productState });
+        }
+
+        if ( query === 'Used' ) {
+            const productState = await UserProduct.find({ state: query }).lean();
+            res.render('shop/StateSortPage', { title: 'Aligator Store | Results', productState });
+        }
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/user-products-price-range', async (req, res) => {
+    try {
+        const price_from = req.query.price_from;
+        const price_to = req.query.price_to;
+        const products = await UserProduct.find({}).lean();
+        const output = _(products)
+            .filter(function (x) {
+                return x.price >= price_from && x.price <= price_to
+            })
+            .sortBy(function (o) {
+                return o.price
+            })
+            .value()
+
+        res.render('shop/PriceSortPage', { title: 'Aligator Store | Results', output });
     } catch (e) {
         console.log({ message: e });
     }

@@ -13,12 +13,12 @@ module.exports = function Cart (oldCart) {
                 quantity: 0,
                 price: 0
             };
-
-            storeItem.quantity++;
-            storeItem.price = storeItem.item.price * storeItem.quantity;
-            this.totalQuantity++;
-            this.totalPrice += storeItem.item.price;
         }
+
+        storeItem.quantity++;
+        storeItem.price = storeItem.item.price * storeItem.quantity;
+        this.totalQuantity++;
+        this.totalPrice += storeItem.item.price;
     };
 
     // reduce one item from cart

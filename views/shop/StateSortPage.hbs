@@ -10,8 +10,7 @@
                     <div class="breadcrumb-text">
                         <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
                         <span style="color: black">/</span>
-                        <span class="breadcrumb-login">Users Products</span>
-                        <span class="breadcrumb-user-products"><i style="color: black" class="fas fa-arrow-right mr-3"></i><a href="/store/products">Products</a></span>
+                        <span class="breadcrumb-login">Results</span>
                     </div>
                 </div>
             </div>
@@ -28,7 +27,7 @@
                                 <h4>Category</h4>
                             </div>
                             <div class="widget-category-select">
-                                <form action="/store/user-products-category">
+                                <form action="/store/products-category">
                                     <select name="category_select" id="category">
                                         <option class="widget-category-select-option">Choose category</option>
                                         <option class="widget-category-select-option" value="Accessories">Accessories</option>
@@ -44,7 +43,7 @@
                                 <h4>Sort by</h4>
                             </div>
                             <div class="widget-sort-checkbox">
-                                <form action="/store/user-products-sort">
+                                <form action="/store/products-sort">
                                     <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-1" name="sort" value="sort_from_cheaper">
                                     <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-1">Sort from cheaper products </label>
 
@@ -57,6 +56,8 @@
                                     <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-4" name="sort" value="sort_z_a">
                                     <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-4">Sort Z-A </label>
 
+                                    <input class="widget-sort-checkbox-input" type="checkbox" id="widget-sort-checkbox-5" name="sort" value="most_visited">
+                                    <label class="widget-sort-checkbox-label" for="widget-sort-checkbox-5">The most popular </label>
                                     <button type="submit">Sort</button>
                                 </form>
                             </div>
@@ -66,7 +67,7 @@
                                 <h4>State</h4>
                             </div>
                             <div class="widget-state-checkbox">
-                                <form action="/store/user-products-state">
+                                <form action="/store/products-state">
                                     <input class="widget-state-checkbox-input" type="checkbox" id="widget-state-checkbox-1" name="state_product" value="Used">
                                     <label class="widget-state-checkbox-label" for="widget-state-checkbox-1">Used</label>
 
@@ -81,7 +82,7 @@
                                 <h4>Price</h4>
                             </div>
                             <div class="widget-price-input">
-                                <form action="/store/user-products-price-range">
+                                <form action="/store/products-price-range">
                                     <label class="widget-price-input-label">From</label>
                                     <input class="widget-price-input-input" type="number" id="price_from" name="price_from">
                                     <label class="widget-price-input-label">To</label>
@@ -96,14 +97,14 @@
                     <div class="products-page-items">
                         <div class="products-list">
                             <div class="products-cards">
-                                {{#each userProducts}}
+                                {{#each productState}}
                                     <div class="product-card">
                                         <div class="card-img">
                                             <img src="{{ imagePath }}" alt="#">
                                         </div>
                                         <div class="card-body">
                                             <div class="card-title">
-                                                <a href="/store/user-product/{{ this._id }}">{{ title }}</a>
+                                                <a href="/store/product/{{ this._id }}">{{ title }}</a>
                                             </div>
                                             <div class="card-price">
                                                 <p class="product-card-price">{{ price }}$</p>
@@ -115,7 +116,7 @@
                                             </div>
                                             <div class="card-icons">
                                                 <span><a href="#"><i style="color: black" class="far fa-heart"></i></a></span>
-                                                <span><i class="fas fa-user"></i></span>
+                                                <span><i class="fas fa-store-alt"></i></span>
                                             </div>
                                         </div>
                                     </div>
