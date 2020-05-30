@@ -53,7 +53,7 @@
                         <div class="col-lg-6">
                             <div class="product-page-right-container">
                                 <div class="product-page-right-title">
-                                    <h2>{{ title }}</h2>
+                                    {{#each singleProduct}}<h2>{{ this.title }}</h2>{{/each}}
                                 </div>
                                 <div class="product-page-right-available">
                                     <span>in stock</span> <i class="fas fa-store-alt"></i> <span class="rating-span">{{ avarage }}</span>
@@ -73,6 +73,9 @@
                                 <div class="product-page-right-price">
                                     <h3>{{ this.price }}$</h3>
                                 </div>
+                                <div class="product-page-right-state">
+                                    <h3>{{ this.state }}</h3>
+                                </div>
                                 <div class="product-page-right-description">
                                     <h4>Description</h4>
                                     <p>{{ description }}</p>
@@ -84,7 +87,7 @@
                                     <a class="product-page-right-btn-add-to-cart" type="button" href="/store/add-to-cart/{{ this._id }}">
                                         Add to Cart
                                     </a>
-                                    <span><a class="product-page-right-btn-heart" href="#"><i style="color: red" class="far fa-heart"></i></a></span>
+                                    <span><a class="product-page-right-btn-heart" href="/store/add-to-wish/{{ this._id }}"><i style="color: red" class="far fa-heart"></i></a></span>
                                 </div>
                             </div>
                         </div>

@@ -3,6 +3,7 @@ const router = Router();
 const Product = require('../models/Product'); // import Product schema
 const UserProduct = require('../models/UserProduct'); // import User schema
 const Cart = require('../models/Cart'); // import Cart schema
+const Wish = require('../models/Wish');
 const User = require('../models/User');
 const _ = require('lodash');
 const Contact = require('../models/Contact');
@@ -160,6 +161,52 @@ router.post('/subscribe', async (req, res) => {
     }
 });
 
+router.get('/add-to-wish/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const wish = new Wish(req.session.wish ? req.session.wish : {});
+
+        await Product.findById(id, (err, product) => {
+            if (err) {
+                return res.redirect('/store/home');
+            }
+
+            wish.addToWish(product, product.id);
+            req.session.wish = wish;
+            console.log(req.session.wish);
+            res.redirect(req.get('referer'));
+        });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/wish', async (req, res) => {
+    try {
+        if (!req.session.wish) {
+            return res.render('shop/WishPage', { title: 'Aligator Store | Wish', products: null });
+        }
+
+        const wish = await new Wish(req.session.wish);
+        res.render('shop/WishPage', { title: 'Aligator Store | Wish', products: wish.generateArray(), totalPrice: wish.totalPrice });
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
+router.get('/remove-wish/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const wish = new Wish(req.session.wish ? req.session.wish : {});
+
+        await wish.removeItem(id);
+        req.session.wish = wish;
+        res.redirect('/store/wish');
+    } catch (e) {
+        console.log({ message: e });
+    }
+});
+
 // get route for add product to shopping cart by id // /store/add-to-cart
 router.get('/add-to-cart/:id', async (req, res) => {
      try {
@@ -174,7 +221,7 @@ router.get('/add-to-cart/:id', async (req, res) => {
              cart.addToCart(product, product.id);
              req.session.cart = cart;
              console.log(req.session.cart);
-             res.redirect('/store/home');
+             res.redirect(req.get('referer'));
          });
      } catch (e) {
         console.log({ message: e });

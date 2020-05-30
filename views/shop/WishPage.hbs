@@ -1,0 +1,64 @@
+{{> header }}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<main>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb-container container">
+            <div class="breadcrumb-row row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home mr-2"></i> Home</a>
+                        <span style="color: black">/</span>
+                        <span class="breadcrumb-login">Wish</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{# if products }}
+        <section class="shopping-cart-wrapper">
+            <div class="shopping-cart-container container">
+                <div class="shopping-cart-row">
+                    <div class="shopping-cart-table">
+                        <table class="cart-table">
+                            <thead class="cart-thead">
+                            <tr class="cart-tr-thead">
+                                <th class="th-product-name">Product</th>
+                                <th class="th-product-quantity">Quantity</th>
+                                <th class="th-product-price">Price</th>
+                            </tr>
+                            </thead>
+                            {{# each products }}
+                                <tbody class="cart-tbody">
+                                <tr class="cart-tr-tbody">
+                                    <td class="td-product-name">{{ this.item.title }}</td>
+                                    <td class="td-product-quantity">{{ this.quantity }}</td>
+                                    <td class="td-product-price">{{ this.price }}</td>
+                                    <td class="td-product-reduce"><a href="/store/remove-wish/{{ this.item._id }}"><i class="fas fa-times remove-icon"></i></a></td>
+                                </tr>
+                                </tbody>
+                            {{/each}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {{ else }}
+
+        <section class="shopping-cart-empty-wrapper">
+            <div class="shopping-cart-empty-container container">
+                <div class="shopping-cart-empty-top-text">
+                    <h2>No items in wish <i class="far fa-heart"></i></h2>
+                </div>
+                <hr class="shopping-cart-empty-hr">
+            </div>
+        </section>
+
+    {{/if}}
+
+</main>
+
+{{> footer}}
