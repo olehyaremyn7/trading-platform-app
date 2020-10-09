@@ -1,4 +1,0 @@
-{
-  "port": 5000,
-  "mongoURI": "mongodb+srv://Oleh:shop_app_mongo@storeappcluster-hbatf.azure.mongodb.net/app"
-}
