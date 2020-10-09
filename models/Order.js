@@ -1,7 +1,6 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model} = require('mongoose')
 
 const schema = new Schema({
-    // a link to a user id in MongoDb from the collection User who will place the order // binding of orders to the user
     user: {
         type: Schema.Types.ObjectId, ref: 'User'
     },
@@ -26,6 +25,6 @@ const schema = new Schema({
     paymentId: {
         type: String, required: true
     }
-});
+})
 
-module.exports = model('Order', schema); // 'Order' name of MongoDB collection and exports Order schema
+module.exports = model('Order', schema)

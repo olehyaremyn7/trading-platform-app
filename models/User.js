@@ -1,9 +1,7 @@
-const { Schema, model} = require('mongoose');
-const bcrypt = require('bcrypt'); // password encryption library
+const { Schema, model} = require('mongoose')
+const bcrypt = require('bcrypt')
 
-// User MongoDB Schema
 const userSchema = new Schema({
-    // username = email
     username: {
         type: String,
         required: true
@@ -27,16 +25,14 @@ const userSchema = new Schema({
         required: false,
         default: 'user phone number'
     }
-});
+})
 
-// bcrypt hash password
 userSchema.methods.encryptPassword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
-};
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
+}
 
-// bcrypt compare passwords when user login
 userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-};
+    return bcrypt.compareSync(password, this.password)
+}
 
-module.exports = model('User', userSchema); // // 'UserProduct' name of MongoDB collection and exports User schema
+module.exports = model('User', userSchema)

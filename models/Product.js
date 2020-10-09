@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model} = require('mongoose')
 
 const schema = new Schema({
     imagePath: {
@@ -29,6 +29,6 @@ const schema = new Schema({
         type: String,
         required: true
     }
-});
+})
 
-module.exports = model('Product', schema); // 'Product' name of MongoDB collection and exports Product schema
+module.exports = model('Product', schema)

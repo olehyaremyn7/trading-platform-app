@@ -1,41 +1,31 @@
-Stripe.setPublishableKey('pk_test_oLxFDkYwrohPWDAs7avXKWqO003rIENluo'); // Stripe public key
+const config = require('config/keys.dev.config')
+Stripe.setPublishableKey(config.stripeKey)
 
-// connect payment form by #id
-const #form = $('#checkout-form');
+const #form = $('#checkout-form')
 
-// JQuery is used to extract data from the form
 $form.submit(function(event) {
-    $('#charge-error').addClass('hidden');
-    $form.find('button').prop('disabled', true);
+    $('#charge-error').addClass('hidden')
+    $form.find('button').prop('disabled', true)
     Stripe.card.createToken({
         number: $('#card-number').val(),
         cvc: $('#card-cvc').val(),
         exp_month: $('#card-expiry-month').val(),
         exp_year: $('#card-expiry-year').val(),
         name: $('#card-name').val()
-    }, stripeResponseHandler);
-    return false;
-});
+    }, stripeResponseHandler)
+    return false
+})
 
-// function for response and error checks
 function stripeResponseHandler (status, response) {
-    if (response.error) { // Problem!
-        // Show the errors on the form
-        $('#charge-error').text(response.error.message);
-        $('#charge-error').removeClass('d-none');
-        $form.find('button').prop('disabled', false); // Re-enable submission
+    if (response.error) {
+        $('#charge-error').text(response.error.message)
+        $('#charge-error').removeClass('d-none')
+        $form.find('button').prop('disabled', false)
     }
 
-    else { // Token was created!
-        // Get the token ID:
-        let token = response.id;
-
-        // Insert the token into the form so it gets submitted to the server:
-        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-
-        // Submit the form:
-        $form.get(0).submit();
+    else {
+        let token = response.id
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token))
+        $form.get(0).submit()
     }
 }
-
-// https://stripe.com/docs/stripe-js/v2
