@@ -1,7 +1,7 @@
 {
   "name": "online_store_app",
   "version": "1.0.7",
-  "description": "Graduate  work. Online store app project. /NodeJS/ExpressJS/MongoDB",
+  "description": "Graduate work. Trading platforme app project. /NodeJS/ExpressJS/MongoDB",
   "main": "server.js",
   "engines": {
     "node": "12.18.3",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/olehyaremyn7/online_store_app.git"
+    "url": "git+https://github.com/olehyaremyn7/trading-platform-app.git"
   },
   "keywords": [
     "NodeJS",
@@ -55,7 +55,7 @@
     "nodemon": "^2.0.3"
   },
   "bugs": {
-    "url": "https://github.com/olehyaremyn7/online_store_app/issues"
+    "url": "https://github.com/olehyaremyn7/trading-platform-app/issues"
   },
-  "homepage": "https://github.com/olehyaremyn7/online_store_app#readme"
+  "homepage": "https://github.com/olehyaremyn7/trading-platform-app#readme"
 }
