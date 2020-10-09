@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model} = require('mongoose')
 
 const schema = new Schema({
     imagePath: {
@@ -21,7 +21,6 @@ const schema = new Schema({
         type: Number,
         required: true
     },
-    // a link to a user id in MongoDb from the collection User who will add the item // binding of goods to the user
     user: {
         type: Schema.Types.ObjectId, ref: 'User'
     },
@@ -29,6 +28,6 @@ const schema = new Schema({
         type: String,
         required: true
     }
-});
+})
 
-module.exports = model('UserProduct', schema); // 'UserProduct' name of MongoDB collection and exports UserProduct schema
+module.exports = model('UserProduct', schema)
